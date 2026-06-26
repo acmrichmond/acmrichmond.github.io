@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <title>About &mdash; ACM Richmond</title>
+  <meta name="description" content="Learn about ACM Richmond's mission, programs, and leadership team.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ACM Richmond Professional Chapter">
+  <meta property="og:title" content="About &mdash; ACM Richmond">
+  <meta property="og:description" content="Learn about ACM Richmond's mission, programs, and leadership team.">
+  <meta property="og:url" content="https://acmrichmond.org/about.html">
+  <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About &mdash; ACM Richmond">
+  <meta name="twitter:description" content="Learn about ACM Richmond's mission, programs, and leadership team.">
+  <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
+  <link rel="icon" type="image/png" href="acm-logo.png">
+  <link rel="apple-touch-icon" href="acm-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    const _t = localStorage.getItem('theme');
+    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="brand">
+      <img src="acm-logo.png" alt="ACM Richmond Logo">
+      <div class="brand-text">
+        <h1>ACM Richmond</h1>
+        <p>Professional Chapter</p>
+      </div>
+    </a>
+    <div class="nav-right" id="navRight">
+      <nav><ul id="navList"></ul></nav>
+      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+    </div>
+    <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2>About <span>ACM Richmond</span></h2>
+    <p>A professional chapter of the Association for Computing Machinery, rooted in Richmond, VA.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- MISSION -->
+    <section style="margin-bottom:4rem" class="reveal">
+      <h2 class="section-title">Our <span>Mission</span></h2>
+      <div style="max-width:740px;margin:0 auto;text-align:center">
+        <p style="font-size:1.1rem;line-height:1.85;color:var(--text-muted)">
+          ACM Richmond exists to advance the computing profession in the greater Richmond area. We host expert-led talks, hands-on workshops, and collaborative events that help local technologists grow their skills, stay current with the industry, and build meaningful professional connections.
+        </p>
+        <p style="font-size:0.95rem;line-height:1.8;color:var(--text-muted);margin-top:1.25rem">
+          We are affiliated with the global <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-glow)">Association for Computing Machinery</a>, the world's largest computing professional society. Our chapter brings ACM's global knowledge network and standards to the Richmond tech community.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section style="margin-bottom:4rem">
+      <h2 class="section-title">What We <span>Do</span></h2>
+      <div class="what-we-do-grid reveal-stagger">
+        <div class="wwd-card">
+          <div class="wwd-icon">&#9889;</div>
+          <h4>Lightning Talks</h4>
+          <p>Short, punchy presentations from local practitioners &mdash; real-world lessons in 10 minutes.</p>
+        </div>
+        <div class="wwd-card">
+          <div class="wwd-icon">&#127908;</div>
+          <h4>Technical Talks</h4>
+          <p>In-depth sessions from domain experts on AI, cloud, software architecture, and emerging tech.</p>
+        </div>
+        <div class="wwd-card">
+          <div class="wwd-icon">&#128295;</div>
+          <h4>Workshops</h4>
+          <p>Hands-on learning experiences &mdash; build real skills through guided exercises and live demos.</p>
+        </div>
+        <div class="wwd-card">
+          <div class="wwd-icon">&#127942;</div>
+          <h4>Hackathons</h4>
+          <p>Collaborative challenges where teams tackle real problems and showcase creative solutions.</p>
+        </div>
+        <div class="wwd-card">
+          <div class="wwd-icon">&#127760;</div>
+          <h4>Networking</h4>
+          <p>Connect with Richmond's tech community &mdash; find collaborators, mentors, and opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section style="margin-bottom:4rem">
+      <h2 class="section-title">Chapter <span>Leadership</span></h2>
+      <div class="officer-grid" id="officerGrid">
+        <div style="text-align:center;color:var(--text-muted);padding:2rem;grid-column:1/-1">Loading team&hellip;</div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="reveal">
+      <h2 class="section-title">Our <span>Values</span></h2>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3>&#128300; Technical Excellence</h3>
+          <p>We prioritize substance over hype &mdash; curating content that is rigorous, practical, and grounded in real engineering experience.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>&#129309; Inclusive Community</h3>
+          <p>Every event is free and open to all. We welcome students, career-changers, junior engineers, and seasoned veterans equally.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>&#128274; Integrity &amp; Trust</h3>
+          <p>Our speakers are vetted by officers. Content is controlled via the ACM Richmond GitHub repository &mdash; no anonymous submissions.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="join.html">Join Us</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="join.html">Apply to Speak</a></li>
+        <li><a href="join.html">Become a Member</a></li>
+        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/@ACMChapterRVA"
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ACM Richmond Professional Chapter</span>
+    <span>A chapter of the <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer">Association for Computing Machinery</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  renderNav('about');
+
+  fetch('data/team.json')
+    .then(function(r) { return r.json(); })
+    .then(function(team) {
+      var grid = document.getElementById('officerGrid');
+      grid.innerHTML = team.map(officerCardHTML).join('');
+      animateIn(grid);
+    })
+    .catch(function() {
+      document.getElementById('officerGrid').innerHTML =
+        '<p style="text-align:center;color:var(--text-muted)">Unable to load team data.</p>';
+    });
+</script>
+</body>
+</html>

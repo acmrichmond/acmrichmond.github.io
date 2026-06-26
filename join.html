@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <title>Join Us &mdash; ACM Richmond</title>
+  <meta name="description" content="Become a member, apply to speak, partner, or take an officer role at ACM Richmond.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ACM Richmond Professional Chapter">
+  <meta property="og:title" content="Join Us &mdash; ACM Richmond">
+  <meta property="og:description" content="Become a member, apply to speak, partner, or take an officer role at ACM Richmond.">
+  <meta property="og:url" content="https://acmrichmond.org/join.html">
+  <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Join Us &mdash; ACM Richmond">
+  <meta name="twitter:description" content="Become a member, apply to speak, partner, or take an officer role at ACM Richmond.">
+  <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
+  <link rel="icon" type="image/png" href="acm-logo.png">
+  <link rel="apple-touch-icon" href="acm-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    const _t = localStorage.getItem('theme');
+    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="brand">
+      <img src="acm-logo.png" alt="ACM Richmond Logo">
+      <div class="brand-text">
+        <h1>ACM Richmond</h1>
+        <p>Professional Chapter</p>
+      </div>
+    </a>
+    <div class="nav-right" id="navRight">
+      <nav><ul id="navList"></ul></nav>
+      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+    </div>
+    <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2>Join <span>ACM Richmond</span></h2>
+    <p>There are many ways to get involved &mdash; as a member, speaker, partner, officer, or volunteer.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="notice reveal">
+      <span>&#128274;</span>
+      <span><strong>Content Security:</strong> All speaker and event content is reviewed and published exclusively by officers via GitHub pull request. Application forms link to officer-controlled Google Forms &mdash; no user-submitted content ever appears on this site without review.</span>
+    </div>
+
+    <!-- JOIN CARDS -->
+    <div class="join-grid reveal-stagger">
+      <div class="join-card">
+        <div class="join-icon">&#127881;</div>
+        <h3>Become a Member</h3>
+        <p>Join ACM globally and connect with over 100,000 computing professionals. Access research, discounts, and the full ACM Digital Library.</p>
+        <div class="join-action">
+          <a href="https://www.acm.org/membership" target="_blank" rel="noopener noreferrer" class="btn-sm">Join ACM &rarr;</a>
+        </div>
+      </div>
+
+      <div class="join-card">
+        <div class="join-icon">&#127908;</div>
+        <h3>Apply to Speak</h3>
+        <p>Share your expertise with the Richmond tech community. We welcome talks on AI, software engineering, systems, security, and more.</p>
+        <div class="join-action">
+          <!-- Replace with your Google Form URL for speaker applications -->
+          <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
+        </div>
+      </div>
+
+      <div class="join-card">
+        <div class="join-icon">&#129309;</div>
+        <h3>Partner With Us</h3>
+        <p>Is your company looking to connect with Richmond's tech talent? Sponsor an event or co-host a technical session with us.</p>
+        <div class="join-action">
+          <!-- Replace with your Google Form URL for partnership inquiries -->
+          <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Get in Touch &rarr;</a>
+        </div>
+      </div>
+
+      <div class="join-card">
+        <div class="join-icon">&#127941;</div>
+        <h3>Apply for Officer Role</h3>
+        <p>Help shape the chapter's future. Open roles include social media, programming, outreach, and more as we grow.</p>
+        <div class="join-action">
+          <!-- Replace with your Google Form URL for officer applications -->
+          <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
+        </div>
+      </div>
+
+      <div class="join-card">
+        <div class="join-icon">&#128587;</div>
+        <h3>Volunteer</h3>
+        <p>Help run events &mdash; as a moderator, social media coordinator, logistics lead, or workshop facilitator. Flexible commitment.</p>
+        <div class="join-action">
+          <a href="volunteer.html" class="btn-sm">View Slots &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPEN POSITIONS -->
+    <section>
+      <h2 class="section-title">Open <span>Positions</span></h2>
+      <div id="openPositions">
+        <div style="color:var(--text-muted);font-size:0.9rem">Loading open roles&hellip;</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="join.html">Join Us</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="join.html">Apply to Speak</a></li>
+        <li><a href="join.html">Become a Member</a></li>
+        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/@ACMChapterRVA"
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ACM Richmond Professional Chapter</span>
+    <span>A chapter of the <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer">Association for Computing Machinery</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  renderNav('join');
+
+  fetch('data/team.json')
+    .then(function(r) { return r.json(); })
+    .then(function(team) {
+      var open = team.filter(function(m) { return m.open; });
+      var el = document.getElementById('openPositions');
+      if (!open.length) {
+        el.innerHTML = '<div class="open-positions-notice">No open officer positions at this time. Check back later or <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-glow)">express your interest</a>.</div>';
+        return;
+      }
+      el.innerHTML = open.map(function(m) {
+        return '<div class="open-position-card">' +
+          '<div><h4>' + sanitize(m.role) + '</h4>' +
+          '<p style="color:var(--text-muted);font-size:0.82rem;margin-top:0.2rem">' + sanitize(m.bio || 'Help shape the ACM Richmond chapter.') + '</p></div>' +
+          '<a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>' +
+        '</div>';
+      }).join('');
+      animateIn(el);
+    })
+    .catch(function() {
+      document.getElementById('openPositions').innerHTML =
+        '<div class="open-positions-notice">Unable to load open positions.</div>';
+    });
+</script>
+</body>
+</html>

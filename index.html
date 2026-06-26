@@ -1,396 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACM Richmond Professional Chapter</title>
-    <style>
-        /* Theme Variables */
-        :root {
-            /* Dark Mode Core (Default) */
-            --bg-deep: #0a121c;       
-            --bg-dark: #111e2e;       
-            --text-light: #f4f6f9;    
-            --text-muted: #94a3b8;    
-            --cyan-glow: #38bdf8;     
-            --cyan-bright: #06b6d4;   
-            --white: #ffffff;
-            --card-border: rgba(56, 189, 248, 0.1);
-        }
-
-        /* Light Mode Overrides */
-        [data-theme="light"] {
-            --bg-deep: #f1f5f9;       /* Crisp slate-white background */
-            --bg-dark: #ffffff;       /* Pure white structural cards */
-            --text-light: #0f172a;    /* Deep navy text for crisp contrast */
-            --text-muted: #475569;    /* Dark slate muted text */
-            --cyan-glow: #0284c7;     /* Deeper rich blue-cyan for daylight readability */
-            --cyan-bright: #0891b2;   /* Solid branding teal */
-            --white: #0f172a;
-            --card-border: rgba(15, 23, 42, 0.08);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-light);
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        header {
-            background-color: var(--bg-dark);
-            border-bottom: 2px solid rgba(56, 189, 248, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--white);
-        }
-
-        .brand img {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 2px solid var(--cyan-bright);
-        }
-
-        .brand-text h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text p {
-            font-size: 0.8rem;
-            color: var(--cyan-glow);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--cyan-glow);
-        }
-
-        /* Mode Toggle Button Styling */
-        .theme-toggle-btn {
-            background: transparent;
-            border: 2px solid var(--cyan-bright);
-            color: var(--cyan-bright);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .theme-toggle-btn:hover {
-            background-color: var(--cyan-bright);
-            color: #ffffff;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--bg-deep) 30%, var(--bg-dark) 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .hero h2 span {
-            color: var(--cyan-bright);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-            color: var(--text-muted);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--cyan-glow);
-            border: 2px solid var(--cyan-glow);
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--cyan-glow);
-            color: #ffffff;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .section-title span {
-            color: var(--cyan-glow);
-        }
-
-        .officer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
-
-        .officer-card {
-            background-color: var(--bg-dark);
-            border: 1px solid var(--card-border);
-            border-top: 3px solid var(--cyan-bright);
-            border-radius: 6px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-        }
-
-        .officer-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--cyan-glow);
-        }
-
-        .officer-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(6, 182, 212, 0.1);
-            border: 2px solid var(--cyan-glow);
-            margin: 0 auto 1.2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--cyan-glow);
-            font-size: 1.4rem;
-        }
-
-        .officer-card h3 {
-            color: var(--white);
-            font-size: 1.25rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .officer-card p {
-            color: var(--cyan-glow);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .pillar-card {
-            background-color: var(--bg-dark);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .pillar-card h3 {
-            margin-bottom: 1rem;
-            color: var(--white);
-            border-left: 3px solid var(--cyan-glow);
-            padding-left: 10px;
-        }
-
-        .pillar-card p {
-            color: var(--text-muted);
-        }
-
-        footer {
-            background-color: var(--bg-deep);
-            border-top: 1px solid var(--card-border);
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-            .hero h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <title>ACM Richmond Professional Chapter</title>
+  <meta name="description" content="Richmond, VA's ACM chapter — connecting tech innovators, educators, and leaders through talks, workshops, and community.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ACM Richmond Professional Chapter">
+  <meta property="og:title" content="ACM Richmond Professional Chapter">
+  <meta property="og:description" content="Richmond, VA's ACM chapter — connecting tech innovators, educators, and leaders through talks, workshops, and community.">
+  <meta property="og:url" content="https://acmrichmond.org/">
+  <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ACM Richmond Professional Chapter">
+  <meta name="twitter:description" content="Richmond, VA's ACM chapter — connecting tech innovators, educators, and leaders.">
+  <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
+  <link rel="icon" type="image/png" href="acm-logo.png">
+  <link rel="apple-touch-icon" href="acm-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    const _t = localStorage.getItem('theme');
+    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  </script>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="brand">
-                <img src="acm-logo.png" alt="ACM Richmond Logo">
-                <div class="brand-text">
-                    <h1>ACM Richmond</h1>
-                    <p>Professional Chapter</p>
-                </div>
-            </a>
-            <div class="nav-right">
-                <nav>
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="events.html">Events</a></li>
-                    </ul>
-                </nav>
-                <button class="theme-toggle-btn" id="themeToggle">☀️ Light</button>
-            </div>
-        </div>
-    </header>
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="brand">
+      <img src="acm-logo.png" alt="ACM Richmond Logo">
+      <div class="brand-text">
+        <h1>ACM Richmond</h1>
+        <p>Professional Chapter</p>
+      </div>
+    </a>
+    <div class="nav-right" id="navRight">
+      <nav><ul id="navList"></ul></nav>
+      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+    </div>
+    <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
 
-    <section class="hero">
-        <h2>Advancing Computing as a <span>Science & Profession</span></h2>
-        <p>Welcome to the Richmond, Virginia Professional Chapter of the Association for Computing Machinery. Connecting local tech innovators, educators, and leaders.</p>
-        <a href="events.html" class="btn">View Upcoming Events</a>
+<main>
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">Richmond, VA &mdash; Est. May 2026</div>
+      <h2 class="hero-headline">Where Richmond's <span>Tech Professionals</span><br>Connect, Learn &amp; Lead</h2>
+      <p class="hero-mission">ACM Richmond brings together software engineers, researchers, and innovators for expert talks, hands-on workshops, and real community &mdash; advancing computing as a profession and a science.</p>
+      <div class="hero-actions">
+        <a href="join.html" class="btn-primary-large">Join the Community</a>
+        <a href="events.html" class="btn-outline-large">Explore Events</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Events Hosted</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">Attendees</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Free</span>
+          <span class="stat-label">To Attend</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Officers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- QUICK LINKS -->
+    <div class="quick-links reveal-stagger" style="margin-bottom:3.5rem">
+      <a href="events.html" class="quick-link-card">
+        <span class="ql-icon">&#128197;</span>
+        <span class="ql-label">Events</span>
+      </a>
+      <a href="media.html" class="quick-link-card">
+        <span class="ql-icon">&#127909;</span>
+        <span class="ql-label">Media</span>
+      </a>
+      <a href="about.html" class="quick-link-card">
+        <span class="ql-icon">&#127963;&#65039;</span>
+        <span class="ql-label">About</span>
+      </a>
+      <a href="join.html" class="quick-link-card">
+        <span class="ql-icon">&#129309;</span>
+        <span class="ql-label">Join Us</span>
+      </a>
+      <a href="volunteer.html" class="quick-link-card">
+        <span class="ql-icon">&#128587;</span>
+        <span class="ql-label">Volunteer</span>
+      </a>
+    </div>
+
+    <!-- NEXT EVENT SPOTLIGHT (populated by JS) -->
+    <div id="nextEventSpotlight"></div>
+
+    <!-- STAY CONNECTED -->
+    <section class="stay-connected reveal">
+      <h3>Stay Connected</h3>
+      <p class="stay-connected-subtitle">Get notified about upcoming events, speaker announcements, and chapter news. No spam, ever.</p>
+      <!--
+        Email signup: Create a Google Form with one email question, then update EMAIL_FORM_URL
+        in the script below with your form's viewform URL (use pre-fill format for best UX):
+        https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?entry.YOUR_ENTRY_ID=
+      -->
+      <form id="stayConnectedForm" novalidate>
+        <div class="email-form-row">
+          <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required autocomplete="email">
+          <button type="submit" class="btn-submit">Notify Me</button>
+        </div>
+        <p class="email-note">We respect your privacy. Unsubscribe anytime.</p>
+      </form>
     </section>
 
-    <main class="container">
-        
-        <h2 class="section-title">Chapter <span>Leadership Team</span></h2>
-        <div class="officer-grid">
-            <div class="officer-card">
-                <div class="officer-avatar">JS</div>
-                <h3>Jyostna Seelam</h3>
-                <p>Chair</p>
-            </div>
-            <div class="officer-card">
-                <div class="officer-avatar">AR</div>
-                <h3>Abdul Rasheed Shaik</h3>
-                <p>Vice Chair</p>
-            </div>
-            <div class="officer-card">
-                <div class="officer-avatar">KS</div>
-                <h3>Mr Khadarvali Shaik</h3>
-                <p>Membership Chair</p>
-            </div>
-            <div class="officer-card">
-                <div class="officer-avatar">AB</div>
-                <h3>Ankita Banerjee</h3>
-                <p>Treasurer</p>
-            </div>
-            <div class="officer-card">
-                <div class="officer-avatar">KA</div>
-                <h3>Karthik Reddy A</h3>
-                <p>Secretary</p>
-            </div>
-            <div class="officer-card">
-                <div class="officer-avatar">DS</div>
-                <h3>Dipanjan Sen</h3>
-                <p>Web Master</p>
-            </div>
+    <!-- CHAPTER LEADERSHIP -->
+    <section style="margin-bottom:4rem">
+      <h2 class="section-title">Chapter <span>Leadership</span></h2>
+      <div class="officer-grid" id="officerGrid">
+        <div style="text-align:center;color:var(--text-muted);padding:2rem;grid-column:1/-1">Loading team&hellip;</div>
+      </div>
+    </section>
+
+    <!-- CORE PILLARS -->
+    <section>
+      <h2 class="section-title">What We <span>Do</span></h2>
+      <div class="pillars-grid reveal-stagger">
+        <div class="pillar-card">
+          <h3>&#9889; Lightning Talks</h3>
+          <p>Short, high-impact presentations from local practitioners on emerging tools, techniques, and lessons learned.</p>
         </div>
-
-        <h2 class="section-title">Our <span>Core Pillars</span></h2>
-        <div class="pillars-grid">
-            <div class="pillar-card">
-                <h3>Community</h3>
-                <p>Bringing together practitioners, researchers, and students from across the Greater Richmond area to network, collaborate, and share ideas.</p>
-            </div>
-            <div class="pillar-card">
-                <h3>Innovation</h3>
-                <p>Keeping pace with changing technical landscapes—from local systems optimization to AI architectures—via interactive community events.</p>
-            </div>
-            <div class="pillar-card">
-                <h3>Professional Growth</h3>
-                <p>Providing technical panels, educational talks, and local visibility platforms to build strong technology pipelines across Virginia.</p>
-            </div>
+        <div class="pillar-card">
+          <h3>&#127908; Technical Talks</h3>
+          <p>In-depth sessions from industry experts covering AI, software architecture, cloud infrastructure, and more.</p>
         </div>
-    </main>
+        <div class="pillar-card">
+          <h3>&#128295; Workshops</h3>
+          <p>Hands-on sessions that build real skills &mdash; from prompt engineering to system design to DevOps practices.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>&#127760; Networking</h3>
+          <p>Connect with Richmond's tech community, find collaborators, mentors, and career opportunities.</p>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 ACM Richmond Professional Chapter. All Rights Reserved.</p>
-    </footer>
+  </div>
+</main>
 
-    <script>
-        const toggleBtn = document.getElementById('themeToggle');
-        
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
-                toggleBtn.innerHTML = '☀️ Light';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                toggleBtn.innerHTML = '🌙 Dark';
-            }
-        });
-    </script>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="join.html">Join Us</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="join.html">Apply to Speak</a></li>
+        <li><a href="join.html">Become a Member</a></li>
+        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/@ACMChapterRVA"
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ACM Richmond Professional Chapter</span>
+    <span>A chapter of the <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer">Association for Computing Machinery</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  renderNav('home');
+
+  var EMAIL_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd-xBwD9xNw3G0Giyvi65U-GrFVs9nfEcXkPI0r7A0BqIA10Q/viewform';
+
+  document.getElementById('stayConnectedForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('emailInput').value.trim();
+    if (!email) return;
+    window.open(EMAIL_FORM_URL, '_blank');
+    this.innerHTML = '<p style="color:var(--cyan-glow);font-weight:600;font-size:0.95rem;text-align:center">Thanks! Enter your email in the tab that just opened to complete your signup.</p>';
+  });
+
+  fetch('data/events.json')
+    .then(function(r) { return r.json(); })
+    .then(function(events) {
+      var upcoming = events.filter(function(e) { return e.type === 'upcoming'; })
+        .sort(function(a, b) { return a.date.localeCompare(b.date); });
+      var next = upcoming[0];
+      var el = document.getElementById('nextEventSpotlight');
+      if (!next) { el.innerHTML = ''; return; }
+      el.innerHTML =
+        '<div class="next-event-spotlight reveal" style="margin-bottom:4rem">' +
+          '<div class="date-badge">' +
+            '<div class="month">' + monthAbbr(next.date) + '</div>' +
+            '<div class="day">'   + dayNum(next.date)   + '</div>' +
+            '<div class="year">'  + yearNum(next.date)  + '</div>' +
+          '</div>' +
+          '<div>' +
+            '<div style="font-size:0.75rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem">Next Event</div>' +
+            '<div class="spotlight-title">'  + sanitize(next.title)   + '</div>' +
+            '<div class="spotlight-meta">'   + sanitize(next.speaker || '') + (next.org ? ' &middot; ' + sanitize(next.org) : '') + '</div>' +
+            '<div class="spotlight-detail">' + sanitize(next.time || '') + (next.format ? ' &middot; ' + sanitize(next.format) : '') + '</div>' +
+          '</div>' +
+          (next.link ? '<a href="' + sanitizeUrl(next.link) + '" target="_blank" rel="noopener noreferrer" class="btn">Register &rarr;</a>' : '<span></span>') +
+        '</div>';
+      initScrollReveal();
+    })
+    .catch(function() {
+      document.getElementById('nextEventSpotlight').innerHTML = '';
+    });
+
+  fetch('data/team.json')
+    .then(function(r) { return r.json(); })
+    .then(function(team) {
+      var grid = document.getElementById('officerGrid');
+      grid.innerHTML = team.map(officerCardHTML).join('');
+      animateIn(grid);
+    })
+    .catch(function() {
+      document.getElementById('officerGrid').innerHTML =
+        '<p style="text-align:center;color:var(--text-muted)">Unable to load team data.</p>';
+    });
+</script>
 </body>
 </html>

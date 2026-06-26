@@ -1,464 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - ACM Richmond</title>
-    
-    <script>
-        const savedTheme = localStorage.getItem('theme') || 'dark'; // Defaulting to dark mode
-        if (savedTheme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-        }
-    </script>
-
-    <style>
-        /* Default Variables (Dark Mode Profile) */
-        :root {
-            --bg-deep: #0a121c;
-            --bg-dark: #111e2e;
-            --text-light: #f4f6f9;
-            --text-muted: #94a3b8;
-            --cyan-glow: #38bdf8;
-            --cyan-bright: #06b6d4;
-            --white: #ffffff;
-        }
-
-        /* 💡 2. THE LIGHT MODE OVERRIDES (This is what makes the colors change!) */
-        [data-theme="light"] {
-            --bg-deep: #f8fafc;       /* Light slate grey base background */
-            --bg-dark: #ffffff;       /* Crisp white for cards and header */
-            --text-light: #0f172a;     /* Dark navy slate text */
-            --text-muted: #64748b;     /* Medium gray for text details */
-            --white: #0f172a;          /* Invert headers from white to dark */
-            /* Cyan colors stay vibrant to keep the brand identity consistent */
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-light);
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-        }
-
-        header {
-            background-color: var(--bg-dark);
-            border-bottom: 2px solid rgba(56, 189, 248, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--white);
-        }
-
-        .brand img {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 2px solid var(--cyan-glow);
-        }
-
-        .brand-text h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text p {
-            font-size: 0.8rem;
-            color: var(--cyan-glow);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--cyan-glow);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .page-title span {
-            color: var(--cyan-glow);
-        }
-
-        .page-subtitle {
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .event-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .event-card {
-            background-color: var(--bg-dark);
-            border-left: 4px solid var(--cyan-bright);
-            border-radius: 0 8px 8px 0;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-        }
-
-        .event-date {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(6, 182, 212, 0.04);
-            border: 1px solid rgba(6, 182, 212, 0.1);
-            border-radius: 6px;
-            padding: 1rem;
-            text-align: center;
-            height: fit-content;
-        }
-
-        .event-date .month {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--cyan-glow);
-            font-weight: 700;
-        }
-
-        .event-date .day {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.2;
-            margin: 5px 0;
-        }
-
-        .event-date .time {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .event-details h3 {
-            font-size: 1.4rem;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .event-meta {
-            font-size: 0.9rem;
-            color: var(--cyan-glow);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .event-details p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-small {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--cyan-bright);
-            border: 1px solid var(--cyan-bright);
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-small:hover {
-            background-color: var(--cyan-bright);
-            color: #ffffff;
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
-        }
-
-        footer {
-            background-color: var(--bg-deep);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 6rem;
-            transition: background-color 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .event-card {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .event-date {
-                flex-direction: row;
-                gap: 10px;
-                width: 100%;
-                justify-content: center;
-                padding: 0.5rem;
-            }
-            .event-date .day {
-                font-size: 1.2rem;
-                margin: 0;
-            }
-        }
-        
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .theme-toggle-btn {
-            background: transparent;
-            border: 2px solid var(--cyan-bright);
-            color: var(--cyan-bright);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .theme-toggle-btn:hover {
-            background-color: var(--cyan-bright);
-            color: #ffffff;
-        }
-        /* Section Header Utilities */
-.events-section-heading {
-    font-size: 1.6rem;
-    color: var(--cyan-glow);
-    margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
-    padding-bottom: 0.5rem;
-}
-
-.past-heading {
-    color: var(--text-muted); /* Past header blends quietly into the background */
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-}
-
-/* Modifier class for archive cards */
-.event-card.past {
-    opacity: 0.75;
-    border-left-color: var(--text-muted); /* Changes border accent from bright cyan to grey */
-    box-shadow: none; /* Softens past card depth */
-}
-
-/* Clean styling for static 'Concluded' tags */
-.btn-past {
-    display: inline-block;
-    background-color: rgba(148, 163, 184, 0.05);
-    color: var(--text-muted);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: default;
-}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <title>Events &mdash; ACM Richmond</title>
+  <meta name="description" content="Upcoming and past technical talks, panels, and workshops from ACM Richmond.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ACM Richmond Professional Chapter">
+  <meta property="og:title" content="Events &mdash; ACM Richmond">
+  <meta property="og:description" content="Upcoming and past technical talks, panels, and workshops from ACM Richmond.">
+  <meta property="og:url" content="https://acmrichmond.org/events.html">
+  <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Events &mdash; ACM Richmond">
+  <meta name="twitter:description" content="Upcoming and past technical talks, panels, and workshops from ACM Richmond.">
+  <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
+  <link rel="icon" type="image/png" href="acm-logo.png">
+  <link rel="apple-touch-icon" href="acm-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    const _t = localStorage.getItem('theme');
+    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  </script>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="brand">
-                <img src="acm-logo.png" alt="ACM Richmond Logo">
-                <div class="brand-text">
-                    <h1>ACM Richmond</h1>
-                    <p>Professional Chapter</p>
-                </div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="events.html" class="active">Events</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle-btn" id="themeToggle">☀️ Light</button>
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="brand">
+      <img src="acm-logo.png" alt="ACM Richmond Logo">
+      <div class="brand-text">
+        <h1>ACM Richmond</h1>
+        <p>Professional Chapter</p>
+      </div>
+    </a>
+    <div class="nav-right" id="navRight">
+      <nav><ul id="navList"></ul></nav>
+      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+    </div>
+    <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2>Chapter <span>Events</span></h2>
+    <p>Technical talks, workshops, and panels &mdash; past and upcoming. Click a highlighted date on the calendar to jump to that event.</p>
+  </div>
+
+  <div class="container">
+    <div class="events-layout">
+      <!-- CALENDAR COLUMN -->
+      <div class="events-calendar-col">
+        <div class="cal-container" id="calContainer"></div>
+        <div class="cal-detail" id="calDetail">
+          <h4 id="calDetailDate"></h4>
+          <div id="calDetailContent"></div>
         </div>
-    </header>
+      </div>
 
-<main class="container">
-    <h2 class="page-title">Chapter <span>Events</span></h2>
-    <p class="page-subtitle">Join our technical talks, panels, and networking mixers across Richmond.</p>
-
-    <!-- =========================================================
-         🚀 UPCOMING EVENTS SECTION
-         (Move cards here when announcing new upcoming activities)
-         ========================================================= -->
-    <section class="events-section">
-        <h3 class="section-title">Upcoming Events</h3>
-        <div class="events-grid">
-
-            <!-- Flyer Event: June 27th -->
-            <div class="event-card">
-                <div class="event-date-badge">
-                    <div class="month">June</div>
-                    <div class="day">27</div>
-                    <div class="time">2:00 PM EST</div>
-                </div>
-                <div class="event-details">
-                    <h3 class="event-title">Trustworthy AI in Production: Building Reliable, Secure, and Observable AI Systems</h3>
-                    <div class="event-meta"><strong>Speaker:</strong> Ravi Teja Reddy Mandala (Lead Site Reliability Engineer at Oracle)</div>
-                    <div class="event-meta"><strong>Location:</strong> Virtual Session</div>
-                    <p class="event-description">
-                        <strong>Intended Audience:</strong> Software Engineers & Architects <br>
-                        An engineering talk focusing on strategies and frameworks required for building reliable, secure, and highly observable AI systems in production environments.
-                    </p>
-                    <a href="#" class="btn-primary">Join Us</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-        <!-- =========================================================
-             ⏳ PAST EVENTS ARCHIVE
-             (When an event finishes, drop it down here!)
-             ========================================================= -->
-        <div class="section-wrapper" style="margin-top: 5rem;">
-            <h3 class="events-section-heading past-heading">Past Events</h3>
-            <div class="event-list">
-
-                <!-- Past Event 3: June 06 -->
-                <div class="event-card past">
-                    <div class="event-date">
-                        <div class="month">June</div>
-                        <div class="day">06</div>
-                        <div class="time">10:00 AM EST</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Technical Dual-Session: Reliable AI Agents & Resilient Real-Time Systems</h3>
-                        <div class="event-meta">Speakers: Vidisha Vijay (Senior Data Scientist, CVS Health) & Ajay Pandey (Director, Tech Development, Tradeweb)</div>
-                        <p><strong>Session 1:</strong> Evaluation frameworks designed for tracking accuracy and robustness across multi-step LLM data pipelines. <br>
-                           <strong>Session 2:</strong> Advanced engineering patterns and operational strategies for scaling infrastructure to handle heavy traffic and real-time event surges.</p>
-                        <span class="btn-past">Event Concluded</span>
-                    </div>
-                </div>
-
-                <!-- Past Event 2: May 16 -->
-                <div class="event-card past">
-                    <div class="event-date">
-                        <div class="month">May</div>
-                        <div class="day">16</div>
-                        <div class="time">10:00 AM EST</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Why AI Agents Fail in Production – and How to Fix Them</h3>
-                        <div class="event-meta">Featured Speaker: Venkata Phani PatelKhana (Distinguished Engineer at Dell Technology)</div>
-                        <p>An engineering dive mapping out structural patterns for tracking production failures where runtime environments encounter dynamic real-world users. The discussion highlights architectural system boundaries designed to build stable, transparent, and easy-to-debug applications.</p>
-                        <span class="btn-past">Event Concluded</span>
-                    </div>
-                </div>
-
-                <!-- Past Event 1: May 02 -->
-                <div class="event-card past">
-                    <div class="event-date">
-                        <div class="month">May</div>
-                        <div class="day">02</div>
-                        <div class="time">10:00 AM ET</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>ACM Richmond Official Launch Meeting 🎤</h3>
-                        <div class="event-meta">Location: Virtual / Global Session</div>
-                        <p>The formal foundational gathering for ACM Richmond. This initial session introduced the chapter steering committee, laid out our organizational roadmap mission, and provided an exclusive sneak-peek look at our technical presentation lineups.</p>
-                        <span class="btn-past">Event Concluded</span>
-                    </div>
-                </div>
-
-            </div>
+      <!-- EVENT LISTS -->
+      <div>
+        <h3 class="section-heading">Upcoming Events</h3>
+        <div class="event-list" id="upcomingList">
+          <div style="color:var(--text-muted);font-size:0.9rem">Loading&hellip;</div>
         </div>
 
-    </main>
+        <h3 class="section-heading muted" style="margin-top:3rem">Past Events</h3>
+        <div class="event-list" id="pastList">
+          <div style="color:var(--text-muted);font-size:0.9rem">Loading&hellip;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
-    <footer>
-        <p>&copy; 2026 ACM Richmond Professional Chapter. All Rights Reserved.</p>
-    </footer>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="join.html">Join Us</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="join.html">Apply to Speak</a></li>
+        <li><a href="join.html">Become a Member</a></li>
+        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/@ACMChapterRVA"
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ACM Richmond Professional Chapter</span>
+    <span>A chapter of the <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer">Association for Computing Machinery</a></span>
+  </div>
+</footer>
 
-    <script>
-        const toggleBtn = document.getElementById('themeToggle');
-        
-        // Sync button text on initial page load based on current state
-        if (document.documentElement.getAttribute('data-theme') === 'light') {
-            toggleBtn.innerHTML = '🌙 Dark';
-        } else {
-            toggleBtn.innerHTML = '☀️ Light';
-        }
+<script src="js/main.js"></script>
+<script>
+  renderNav('events');
 
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
-                toggleBtn.innerHTML = '☀️ Light';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                toggleBtn.innerHTML = '🌙 Dark';
-                localStorage.setItem('theme', 'light');
+  function eventCardHTML(e, isPast) {
+    var tags = [
+      e.format   ? '<span class="badge badge-cyan">'  + sanitize(e.format)   + '</span>' : '',
+      e.audience ? '<span class="badge badge-muted">' + sanitize(e.audience) + '</span>' : '',
+      isPast ? '<span class="badge badge-muted">Past</span>' : '<span class="badge badge-amber">Upcoming</span>',
+    ].filter(Boolean).join('');
+
+    var action = '';
+    if (e.link && !isPast) {
+      action = '<a href="' + sanitizeUrl(e.link) + '" target="_blank" rel="noopener noreferrer" class="btn-sm">Register &rarr;</a>';
+    } else if (e.video_url) {
+      action = '<a href="' + sanitizeUrl(e.video_url) + '" target="_blank" rel="noopener noreferrer" class="btn-sm">Watch Recording &rarr;</a>';
+    } else if (isPast) {
+      action = '<span class="btn-muted">Recording Coming Soon</span>';
+    }
+
+    return '<div class="event-card' + (isPast ? ' past' : '') + '" data-date="' + sanitize(e.date) + '" id="ev-' + sanitize(String(e.id)) + '">' +
+      '<div class="event-date">' +
+        '<span class="month">' + monthAbbr(e.date) + '</span>' +
+        '<span class="day">'   + dayNum(e.date)    + '</span>' +
+        '<span class="time">'  + sanitize(e.time || '') + '</span>' +
+      '</div>' +
+      '<div class="event-details">' +
+        '<h3>' + sanitize(e.title) + '</h3>' +
+        '<p class="event-meta">' + sanitize(e.speaker || '') + (e.org ? ' &middot; ' + sanitize(e.org) : '') + '</p>' +
+        '<p>' + sanitize(e.summary || '') + '</p>' +
+        '<div class="event-tags">' + tags + '</div>' +
+        action +
+      '</div>' +
+    '</div>';
+  }
+
+  fetch('data/events.json')
+    .then(function(r) { return r.json(); })
+    .then(function(events) {
+      var upcoming = events.filter(function(e) { return e.type === 'upcoming'; })
+        .sort(function(a, b) { return a.date.localeCompare(b.date); });
+      var past = events.filter(function(e) { return e.type === 'past'; })
+        .sort(function(a, b) { return b.date.localeCompare(a.date); });
+
+      var upEl = document.getElementById('upcomingList');
+      var paEl = document.getElementById('pastList');
+
+      upEl.innerHTML = upcoming.length
+        ? upcoming.map(function(e) { return eventCardHTML(e, false); }).join('')
+        : '<div style="color:var(--text-muted);font-size:0.9rem">No upcoming events scheduled yet &mdash; check back soon!</div>';
+
+      paEl.innerHTML = past.length
+        ? past.map(function(e) { return eventCardHTML(e, true); }).join('')
+        : '<div style="color:var(--text-muted);font-size:0.9rem">No past events recorded yet.</div>';
+
+      animateIn(upEl);
+      animateIn(paEl);
+
+      var cal = new CalendarWidget({
+        containerId: 'calContainer',
+        items: events.map(function(e) { return { date: e.date, id: e.id }; }),
+        accentClass: 'has-event',
+        onSelect: function(dayItems, dateStr) {
+          var detail = document.getElementById('calDetail');
+          var detailDate = document.getElementById('calDetailDate');
+          var detailContent = document.getElementById('calDetailContent');
+          detail.classList.add('visible');
+          detailDate.textContent = new Date(dateStr + 'T00:00:00')
+            .toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+          document.querySelectorAll('.event-card.highlighted').forEach(function(c) { c.classList.remove('highlighted'); });
+
+          if (!dayItems.length) {
+            detailContent.innerHTML = '<div class="cal-detail-empty">No events on this date.</div>';
+            return;
+          }
+
+          detailContent.innerHTML = '';
+          dayItems.forEach(function(item) {
+            var ev = events.find(function(e) { return e.id === item.id; });
+            if (!ev) return;
+            var card = document.getElementById('ev-' + ev.id);
+            if (card) {
+              card.classList.add('highlighted');
+              setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+              setTimeout(function() { card.classList.remove('highlighted'); }, 2500);
             }
-        });
-    </script>
+            detailContent.innerHTML +=
+              '<div style="margin-bottom:0.5rem">' +
+                '<strong style="color:var(--white);font-size:0.9rem">' + sanitize(ev.title) + '</strong><br>' +
+                '<span style="color:var(--text-muted);font-size:0.8rem">' + sanitize(ev.time || '') + (ev.format ? ' &middot; ' + sanitize(ev.format) : '') + '</span>' +
+              '</div>';
+          });
+        }
+      });
+
+      if (upcoming.length) cal.goToDate(upcoming[0].date);
+    })
+    .catch(function() {
+      document.getElementById('upcomingList').innerHTML = '<div style="color:var(--text-muted)">Unable to load events.</div>';
+      document.getElementById('pastList').innerHTML = '';
+    });
+</script>
 </body>
 </html>
