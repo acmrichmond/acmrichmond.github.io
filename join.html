@@ -73,7 +73,7 @@
         <p>Share your expertise with the Richmond tech community. We welcome talks on AI, software engineering, systems, security, and more.</p>
         <div class="join-action">
           <!-- Replace with your Google Form URL for speaker applications -->
-          <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
+          <a href="https://docs.google.com/forms/d/1eMYXUwFsFEixy_sfY6fhcHXIHY5MrTW9e2OGOR9u44U" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
         <p>Is your company looking to connect with Richmond's tech talent? Sponsor an event or co-host a technical session with us.</p>
         <div class="join-action">
           <!-- Replace with your Google Form URL for partnership inquiries -->
-          <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Get in Touch &rarr;</a>
+          <a href="https://docs.google.com/forms/d/1eMYXUwFsFEixy_sfY6fhcHXIHY5MrTW9e2OGOR9u44U" target="_blank" rel="noopener noreferrer" class="btn-sm">Get in Touch &rarr;</a>
         </div>
       </div>
 
@@ -93,7 +93,7 @@
         <p>Help shape the chapter's future. Open roles include social media, programming, outreach, and more as we grow.</p>
         <div class="join-action">
           <!-- Replace with your Google Form URL for officer applications -->
-          <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScZHKF9UhTcBZkwYAfJ_ID4JYwEUC-y-1XF-Ft4G_ESHI5Ycw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
         </div>
       </div>
 
@@ -170,14 +170,14 @@
       var open = team.filter(function(m) { return m.open; });
       var el = document.getElementById('openPositions');
       if (!open.length) {
-        el.innerHTML = '<div class="open-positions-notice">No open officer positions at this time. Check back later or <a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-glow)">express your interest</a>.</div>';
+        el.innerHTML = '<div class="open-positions-notice">No open officer positions at this time. Check back later or <a href="https://docs.google.com/forms/d/e/1FAIpQLScZHKF9UhTcBZkwYAfJ_ID4JYwEUC-y-1XF-Ft4G_ESHI5Ycw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" style="color:var(--cyan-glow)">express your interest</a>.</div>';
         return;
       }
       el.innerHTML = open.map(function(m) {
         return '<div class="open-position-card">' +
           '<div><h4>' + sanitize(m.role) + '</h4>' +
           '<p style="color:var(--text-muted);font-size:0.82rem;margin-top:0.2rem">' + sanitize(m.bio || 'Help shape the ACM Richmond chapter.') + '</p></div>' +
-          '<a href="https://forms.google.com/placeholder" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>' +
+          '<a href="https://docs.google.com/forms/d/e/1FAIpQLScZHKF9UhTcBZkwYAfJ_ID4JYwEUC-y-1XF-Ft4G_ESHI5Ycw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>' +
         '</div>';
       }).join('');
       animateIn(el);
