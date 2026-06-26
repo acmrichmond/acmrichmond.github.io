@@ -1,0 +1,38 @@
+[
+  {
+    "type": "video",
+    "title": "Trustworthy AI in Production",
+    "speaker": "Ravi Teja Reddy Mandala",
+    "date": "2026-06-27",
+    "thumbnail_url": null,
+    "link_url": null,
+    "event_id": "evt-004"
+  },
+  {
+    "type": "video",
+    "title": "Technical Dual-Session: Reliable AI Agents & Resilient Real-Time Systems",
+    "speaker": "Vidisha Vijay & Ajay Pandey",
+    "date": "2026-06-06",
+    "thumbnail_url": null,
+    "link_url": null,
+    "event_id": "evt-003"
+  },
+  {
+    "type": "video",
+    "title": "Why AI Agents Fail in Production – and How to Fix Them",
+    "speaker": "Venkata Phani PatelKhana",
+    "date": "2026-05-16",
+    "thumbnail_url": null,
+    "link_url": null,
+    "event_id": "evt-002"
+  },
+  {
+    "type": "video",
+    "title": "ACM Richmond Official Launch Meeting",
+    "speaker": "ACM Richmond Officers",
+    "date": "2026-05-02",
+    "thumbnail_url": null,
+    "link_url": null,
+    "event_id": "evt-001"
+  }
+]

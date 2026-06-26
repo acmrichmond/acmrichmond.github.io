@@ -1,0 +1,34 @@
+[
+  {
+    "date": "2026-07-12",
+    "role": "Event Moderator",
+    "time": "9:00 AM – 12:00 PM EST",
+    "spots_available": 2,
+    "form_url": "https://forms.google.com/placeholder",
+    "notes": "Help moderate our monthly tech talk and manage Q&A"
+  },
+  {
+    "date": "2026-07-12",
+    "role": "Social Media Coordinator",
+    "time": "Flexible",
+    "spots_available": 1,
+    "form_url": "https://forms.google.com/placeholder",
+    "notes": "Post live updates on LinkedIn and other platforms during the event"
+  },
+  {
+    "date": "2026-07-26",
+    "role": "Event Logistics Coordinator",
+    "time": "1:00 PM – 4:00 PM EST",
+    "spots_available": 3,
+    "form_url": "https://forms.google.com/placeholder",
+    "notes": "Assist with virtual event logistics and attendee support"
+  },
+  {
+    "date": "2026-08-08",
+    "role": "Workshop Facilitator",
+    "time": "10:00 AM – 1:00 PM EST",
+    "spots_available": 2,
+    "form_url": "https://forms.google.com/placeholder",
+    "notes": "Help facilitate our hands-on technical workshop"
+  }
+]
