@@ -4,8 +4,8 @@
     "title": "Trustworthy AI in Production",
     "speaker": "Ravi Teja Reddy Mandala",
     "date": "2026-06-27",
-    "thumbnail_url": null,
-    "link_url": null,
+    "thumbnail_url": "https://img.youtube.com/vi/OhOUTglBFdM/hqdefault.jpg",
+    "link_url": "https://youtu.be/OhOUTglBFdM?si=I-B3OYOGwY2dqYcw",
     "event_id": "evt-004"
   },
   {
@@ -25,14 +25,5 @@
     "thumbnail_url": "https://img.youtube.com/vi/edBtSRouhEg/hqdefault.jpg",
     "link_url": "https://youtu.be/edBtSRouhEg?si=u7Eo52MPDH3-LOww",
     "event_id": "evt-002"
-  },
-  {
-    "type": "video",
-    "title": "ACM Richmond Official Launch Meeting",
-    "speaker": "ACM Richmond Officers",
-    "date": "2026-05-02",
-    "thumbnail_url": null,
-    "link_url": null,
-    "event_id": "evt-001"
   }
 ]
