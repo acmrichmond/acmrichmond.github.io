@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <title>Photo Gallery &mdash; ACM Richmond</title>
+  <meta name="description" content="Event photo gallery from ACM Richmond chapter events.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ACM Richmond Professional Chapter">
+  <meta property="og:title" content="Photo Gallery &mdash; ACM Richmond">
+  <meta property="og:description" content="Event photo gallery from ACM Richmond chapter events.">
+  <meta property="og:url" content="https://acmrichmond.org/gallery.html">
+  <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Photo Gallery &mdash; ACM Richmond">
+  <meta name="twitter:description" content="Event photo gallery from ACM Richmond chapter events.">
+  <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
+  <link rel="icon" type="image/png" href="acm-logo.png">
+  <link rel="apple-touch-icon" href="acm-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    const _t = localStorage.getItem('theme');
+    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="brand">
+      <img src="acm-logo.png" alt="ACM Richmond Logo">
+      <div class="brand-text">
+        <h1>ACM Richmond</h1>
+        <p>Professional Chapter</p>
+      </div>
+    </a>
+    <div class="nav-right" id="navRight">
+      <nav><ul id="navList"></ul></nav>
+      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+    </div>
+    <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2 id="galleryTitle">Photo <span>Gallery</span></h2>
+    <p id="galleryDesc"></p>
+  </div>
+
+  <div class="container">
+    <div class="gallery-meta">
+      <a href="media.html" class="gallery-back">&#8592; Back to Media</a>
+      <span id="galleryDateMeta" style="color:var(--text-muted);font-size:0.875rem"></span>
+    </div>
+    <div class="photo-grid reveal" id="photoGrid">
+      <div style="color:var(--text-muted);font-size:0.9rem">Loading&hellip;</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="join.html">Join Us</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="join.html">Apply to Speak</a></li>
+        <li><a href="join.html">Become a Member</a></li>
+        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/@ACMChapterRVA"
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ACM Richmond Professional Chapter</span>
+    <span>A chapter of the <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer">Association for Computing Machinery</a></span>
+  </div>
+</footer>
+
+<div id="galleryModal" class="gallery-modal" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+  <button class="gallery-close" id="galleryClose" aria-label="Close">&times;</button>
+  <button class="gallery-prev" id="galleryPrev" aria-label="Previous photo">&#8249;</button>
+  <div class="gallery-img-wrap">
+    <img id="galleryImg" src="" alt="" draggable="false">
+  </div>
+  <button class="gallery-next" id="galleryNext" aria-label="Next photo">&#8250;</button>
+  <div class="gallery-counter" id="galleryCounter"></div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  renderNav('media');
+
+  var allPhotos = [];
+  var currentIdx = 0;
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    showPhoto(idx);
+    document.getElementById('galleryModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('galleryModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showPhoto(idx) {
+    currentIdx = (idx + allPhotos.length) % allPhotos.length;
+    document.getElementById('galleryImg').src = allPhotos[currentIdx];
+    document.getElementById('galleryImg').alt = 'Photo ' + (currentIdx + 1);
+    document.getElementById('galleryCounter').textContent = (currentIdx + 1) + ' / ' + allPhotos.length;
+  }
+
+  document.getElementById('galleryClose').addEventListener('click', closeLightbox);
+  document.getElementById('galleryPrev').addEventListener('click', function() { showPhoto(currentIdx - 1); });
+  document.getElementById('galleryNext').addEventListener('click', function() { showPhoto(currentIdx + 1); });
+  document.getElementById('galleryModal').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('galleryModal').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  showPhoto(currentIdx - 1);
+    if (e.key === 'ArrowRight') showPhoto(currentIdx + 1);
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  var params = new URLSearchParams(window.location.search);
+  var galleryId = params.get('id');
+
+  fetch('data/media.json')
+    .then(function(r) { return r.json(); })
+    .then(function(media) {
+      var entry = galleryId
+        ? media.find(function(m) { return m.id === galleryId && m.type === 'photos'; })
+        : null;
+
+      if (!entry || !entry.photos || !entry.photos.length) {
+        document.getElementById('galleryTitle').innerHTML = 'Gallery <span>Not Found</span>';
+        document.getElementById('galleryDesc').textContent = 'This gallery could not be found.';
+        document.getElementById('photoGrid').innerHTML = '';
+        return;
+      }
+
+      document.title = sanitize(entry.title) + ' — ACM Richmond';
+      var parts = sanitize(entry.title).split('\xd7');
+      document.getElementById('galleryTitle').innerHTML = parts.length === 2
+        ? parts[0].trim() + ' <span>\xd7</span> ' + parts[1].trim()
+        : sanitize(entry.title);
+      if (entry.description) document.getElementById('galleryDesc').textContent = entry.description;
+      if (entry.date) document.getElementById('galleryDateMeta').textContent = entry.date;
+
+      allPhotos = entry.photos.map(sanitizeUrl);
+
+      var grid = document.getElementById('photoGrid');
+      grid.innerHTML = allPhotos.map(function(url, idx) {
+        return '<div class="photo-thumb" data-idx="' + idx + '">' +
+          '<img src="' + url + '" alt="Photo ' + (idx + 1) + '" loading="lazy">' +
+          '</div>';
+      }).join('');
+
+      grid.addEventListener('click', function(e) {
+        var thumb = e.target.closest('.photo-thumb');
+        if (!thumb) return;
+        openLightbox(parseInt(thumb.dataset.idx, 10));
+      });
+      grid.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var thumb = e.target.closest('.photo-thumb');
+          if (thumb) { e.preventDefault(); openLightbox(parseInt(thumb.dataset.idx, 10)); }
+        }
+      });
+
+      animateIn(grid);
+    })
+    .catch(function() {
+      document.getElementById('photoGrid').innerHTML =
+        '<div style="color:var(--text-muted)">Unable to load gallery.</div>';
+    });
+</script>
+</body>
+</html>

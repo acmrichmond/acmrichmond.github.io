@@ -142,19 +142,27 @@
   }
 
   function photosCardHTML(item) {
-    var hasLink = item.link_url && !item.link_url.includes('placeholder');
-    var cardInner =
-      '<div class="media-thumb">' +
-        '<span class="thumb-icon">&#128247;</span>' +
-        (hasLink ? '' : '<div class="coming-soon-tag">Coming Soon</div>') +
-      '</div>' +
-      '<div class="media-body">' +
-        '<h4>' + sanitize(item.title) + '</h4>' +
-        '<div class="media-meta">' + sanitize(item.date || '') + '</div>' +
+    var thumbInner = item.thumbnail_url
+      ? '<img src="' + sanitizeUrl(item.thumbnail_url) + '" alt="' + sanitize(item.title) + '" loading="lazy">'
+      : '<span class="thumb-icon">&#128247;</span>';
+    var count = item.photos ? item.photos.length : 0;
+    var overlay = '<div class="gallery-overlay">' +
+      '<span class="gallery-icon">&#128247;</span>' +
+      (count ? '<span class="gallery-count">' + count + ' Photos</span>' : '') +
       '</div>';
 
-    return hasLink
-      ? '<a href="' + sanitizeUrl(item.link_url) + '" target="_blank" rel="noopener noreferrer" class="media-card">' + cardInner + '</a>'
+    var cardInner =
+      '<div class="media-thumb">' + thumbInner + overlay + '</div>' +
+      '<div class="media-body">' +
+        '<h4>' + sanitize(item.title) + '</h4>' +
+        (item.description ? '<p class="media-desc">' + sanitize(item.description) + '</p>' : '') +
+        '<div class="media-meta">' + sanitize(item.date || '') +
+          (count ? ' &middot; ' + count + ' photos' : '') +
+        '</div>' +
+      '</div>';
+
+    return (item.id && item.photos && item.photos.length)
+      ? '<a href="gallery.html?id=' + sanitize(item.id) + '" class="media-card">' + cardInner + '</a>'
       : '<div class="media-card coming-soon">' + cardInner + '</div>';
   }
 
