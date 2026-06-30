@@ -230,6 +230,18 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   }
 }
 
+@media (max-width: 767px) {
+  .events-layout { grid-template-columns: 1fr; gap: 1rem; }
+  .events-calendar-col { position: static; top: auto; }
+  .events-calendar-col, .events-calendar-col .cal-container { max-width: 100%; }
+  .event-card { grid-template-columns: 1fr; padding: 1rem; }
+  .event-date { margin-bottom: 0.6rem; align-self: start; }
+  .modal { width: 96%; padding: 0.9rem; }
+  .modal .modal-grid { grid-template-columns: 80px 1fr; gap: 0.6rem; }
+  .modal .modal-date { min-height: 86px; padding: 0.45rem; }
+  .event-list { gap: 1rem; }
+}
+
 /* ===========================
    BACK TO TOP
    =========================== */
@@ -310,6 +322,45 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .btn-amber:active { transform: scale(0.96); }
 
 /* ===========================
+   MODAL (event detail)
+   =========================== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 300; padding: 1.25rem;
+}
+.modal-overlay.visible { display: flex; }
+.modal {
+  background: var(--bg-dark); border: 1px solid var(--card-border); border-radius: 12px; width: min(920px, 96%); max-height: 90vh; overflow: auto; padding: 1.5rem; box-shadow: 0 36px 90px rgba(0,0,0,0.6);
+}
+.modal h4 { margin: 0 0 0.4rem 0; color: var(--white); font-size: 1.28rem; }
+.modal .meta { color: var(--text-muted); margin-bottom: 0.8rem; }
+.modal .modal-actions { display:flex; gap:0.6rem; margin-top:1.2rem; align-items:center; }
+.modal .modal-body { color: var(--text-muted); line-height:1.7; }
+.modal .modal-grid { display: grid; grid-template-columns: 110px 1fr; gap: 1.25rem; align-items: start; }
+.modal .modal-date { background: rgba(60,110,113,0.04); border: 1px solid rgba(60,110,113,0.08); border-radius: 10px; padding: 0.6rem; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:110px; }
+.modal .modal-date .month { font-size: 0.78rem; color: var(--cyan-glow); font-weight:700; text-transform:uppercase; }
+.modal .modal-date .day { font-size: 2.1rem; font-weight:800; color: var(--white); margin: 0.2rem 0; }
+.modal .modal-date .time { font-size: 0.82rem; color: var(--text-muted); }
+.modal .modal-content { padding: 0.1rem 0; }
+.modal .modal-session { margin-bottom: 1rem; }
+.modal .session-heading { font-weight: 800; color: var(--white); margin-bottom: 0.35rem; font-size: 0.96rem; }
+.modal .session-body { color: var(--text-muted); line-height:1.7; font-size: 0.95rem; }
+.modal .modal-close { position: absolute; right: 1rem; top: 0.9rem; background: transparent; border: none; color: var(--text-muted); font-size: 1.45rem; cursor: pointer; padding: 6px; border-radius:6px; }
+.modal .modal-close:hover { color: var(--white); background: rgba(60,110,113,0.06); }
+.modal .modal-close:focus { outline: 3px solid rgba(76,182,195,0.12); }
+.modal .btn { padding: 0.7rem 1.15rem; }
+.modal .btn.btn-sm { padding: 0.48rem 0.9rem; }
+
+/* Disabled button state */
+.btn.disabled, .btn[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  border-color: rgba(255,255,255,0.06);
+  color: var(--text-muted);
+  background: transparent;
+}
+
+/* ===========================
    BADGES
    =========================== */
 .badge {
@@ -318,7 +369,7 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   border-radius: 12px;
   font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.5px;
 }
 .badge-cyan  { background: rgba(60, 110, 113,0.12); color: var(--cyan-glow); }
@@ -439,7 +490,7 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 }
 
 .officer-avatar {
-  width: 130px; height: 130px;
+  width: 150px; height: 150px;
   border-radius: 50%;
   background: rgba(60, 110, 113,0.1);
   border: 4px solid var(--cyan-glow);
@@ -457,7 +508,7 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   box-shadow: 0 0 0 6px rgba(60, 110, 113, 0.14);
   transform: scale(1.04);
 }
-.officer-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.officer-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 50%; }
 
 .officer-card h3 {
   color: var(--white);
@@ -544,15 +595,27 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .event-card {
   background-color: var(--bg-dark);
   border-left: 4px solid var(--cyan-bright);
-  border-radius: 0 8px 8px 0;
-  padding: 1.75rem;
+  border-radius: 0 10px 10px 0;
+  padding: 2rem; /* increased internal padding for better spacing */
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 1.5rem;
-  transition: background-color 0.3s, border-left-color 0.2s, box-shadow 0.22s ease;
+  grid-template-columns: 110px 1fr; /* slightly wider date column */
+  gap: 1.25rem;
+  transition: background-color 0.28s, border-left-color 0.2s, box-shadow 0.28s ease, transform 0.18s ease;
 }
-.event-card:hover { box-shadow: 0 6px 22px rgba(60, 110, 113,0.14); }
-.event-card.past  { opacity: 0.72; border-left-color: var(--text-muted); }
+.event-card:hover {
+  transform: translateY(-6px); /* subtle lift */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.34), 0 6px 16px rgba(60,110,113,0.06);
+}
+.event-card { position: relative; }
+.event-card.highlighted { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.38), 0 6px 20px rgba(60,110,113,0.08); border-left-color: var(--amber); }
+
+@keyframes highlightPulse {
+  0% { box-shadow: 0 6px 18px rgba(60,110,113,0.05); }
+  50% { box-shadow: 0 12px 28px rgba(60,110,113,0.09); }
+  100% { box-shadow: 0 6px 18px rgba(60,110,113,0.05); }
+}
+.event-card.highlighted { animation: highlightPulse 1.25s ease-in-out; }
+.event-card.past  { opacity: 0.78; border-left-color: var(--text-muted); }
 .event-card.highlighted { border-left-color: var(--amber); background: rgba(60, 110, 113,0.04); }
 
 .event-date {
@@ -564,10 +627,19 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .event-date .month { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--cyan-glow); font-weight: 700; }
 .event-date .day   { font-size: 1.75rem; font-weight: 800; color: var(--white); line-height: 1.15; margin: 2px 0; }
 .event-date .time  { font-size: 0.7rem; color: var(--text-muted); }
-.event-details h3  { font-size: 1.1rem; color: var(--white); margin-bottom: 0.35rem; }
-.event-meta        { font-size: 0.85rem; color: var(--cyan-glow); margin-bottom: 0.6rem; font-weight: 500; }
-.event-details p   { color: var(--text-muted); margin-bottom: 1.1rem; font-size: 0.875rem; line-height: 1.6; }
+.event-details h3  { font-size: 1.12rem; color: var(--white); margin-bottom: 0.55rem; line-height: 1.25; }
+.event-meta        { font-size: 0.86rem; color: var(--cyan-glow); margin-bottom: 0.6rem; font-weight: 500; }
+.event-details p   { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.895rem; line-height: 1.6; }
 .event-tags        { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+/* Make event cards clearly interactive */
+.event-card { cursor: pointer; }
+.event-card:focus { outline: 3px solid rgba(76,182,195,0.12); box-shadow: 0 10px 34px rgba(60,110,113,0.12); transform: translateY(-4px); }
+
+.event-card .card-cta {
+  margin-top: 0.9rem; display: inline-block; font-weight:700; color:var(--cyan-glow); background:transparent; border-radius:8px; padding:0.38rem 0.72rem; border:1px dashed rgba(76,182,195,0.18); font-size:0.84rem;
+}
+.event-card:hover .card-cta { background: rgba(60,110,113,0.05); }
 
 /* ===========================
    CALENDAR WIDGET
@@ -618,6 +690,9 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .cal-cell.selected          { background: var(--cyan-glow)  !important; color: #fff !important; font-weight: 700; }
 .cal-cell.selected-volunteer{ background: var(--amber)      !important; color: #fff !important; font-weight: 700; }
 
+/* add subtle glow/border to selected date */
+.cal-cell.selected { box-shadow: 0 6px 20px rgba(60,110,113,0.12); border-radius:6px; }
+
 .cal-dot { display: block; width: 4px; height: 4px; border-radius: 50%; background: currentColor; margin: 2px auto 0; }
 
 .cal-detail {
@@ -636,10 +711,13 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .events-layout {
   display: grid;
   grid-template-columns: 420px 1fr;
-  gap: 3rem;
+  gap: 2.5rem; /* consistent horizontal gap */
   align-items: start;
 }
 .events-calendar-col { position: sticky; top: 80px; }
+
+/* extra spacing before Past Events */
+.section-heading.muted { margin-top: 3.5rem; }
 
 /* ===========================
    JOIN CARDS
@@ -1037,7 +1115,7 @@ footer {
 
   /* officers */
   .officer-grid   { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  .officer-avatar { width: 100px; height: 100px; font-size: 1.6rem; }
+  .officer-avatar { width: 120px; height: 120px; font-size: 1.6rem; }
   .officer-card   { padding: 1.75rem 1.25rem; }
 
   /* quick links */
@@ -1117,7 +1195,6 @@ footer {
   /* officers — single column */
   .officer-grid   { grid-template-columns: 1fr; }
   .officer-card   { padding: 2rem 1.5rem; }
-  .officer-avatar { width: 110px; height: 110px; }
 
   /* grids — single column */
   .quick-links     { grid-template-columns: repeat(2, 1fr); }

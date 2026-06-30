@@ -23,34 +23,35 @@
     "initials": "KS",
     "bio": "As Membership Chair, Khadarvali leads efforts to grow and retain a vibrant ACM Richmond community. He develops outreach strategies to attract professionals, academics, and students, fosters meaningful engagement across member segments, and works to ensure every member finds lasting value in their ACM affiliation.",
     "linkedin": "https://www.linkedin.com/in/khadarvali-shaik-81907220/",
-    "photo": "media/Khadar-vali-membership-chair.jpeg",
+    "photo": "media/Khadar-vali-membership-chair_new.jpeg",
     "open": false
   },
   {
     "name": "Ankita Banerjee",
     "role": "Treasurer",
     "initials": "AB",
-    "bio": "Treasurer managing chapter finances and sponsorships.",
+    "bio": "As Treasurer, Ankita manages chapter finances and compliance, maintains records, and coordinates communication to ensure we stay aligned with ACM standards. We are dedicated to building an inclusive computing community that connects professionals, researchers, students, and technology enthusiasts through learning, collaboration, and innovation. Together, we create opportunities to grow, share knowledge, and make a lasting impact on the technology ecosystem.",
     "linkedin": "https://www.linkedin.com/in/ankita-banerjee-b74615118/",
-    "photo": "https://ui-avatars.com/api/?name=Ankita+Banerjee&background=353535&color=3c6e71&size=256&bold=true&format=png",
-    "open": false
-  },
-  {
-    "name": "Karthik Reddy A",
-    "role": "Secretary",
-    "initials": "KA",
-    "bio": "Secretary coordinating chapter communications and records.",
-    "linkedin": null,
-    "photo": "https://ui-avatars.com/api/?name=Karthik+Reddy&background=353535&color=3c6e71&size=256&bold=true&format=png",
+    "photo": "media/Ankita_Banerjee_Treasurer.jpeg",
     "open": false
   },
   {
     "name": "Dipanjan Sen",
-    "role": "Web Master",
-    "initials": "DS",
-    "bio": "Web master maintaining the ACM Richmond online presence.",
+    "role": "Secretary",
+    "initials": "KA",
+    "bio": "Secretary coordinating chapter communications and records.",
     "linkedin": "https://www.linkedin.com/in/dipanjan-sen/",
-    "photo": "https://ui-avatars.com/api/?name=Dipanjan+Sen&background=353535&color=3c6e71&size=256&bold=true&format=png",
+    "photo": "media/dipanjan_sen_.secretary.jpeg",
     "open": false
+  }
+  ,
+  {
+    "name": "Open Position",
+    "role": "Web Master",
+    "initials": "WM",
+    "bio": "Open role: maintain the ACM Richmond online presence.",
+    "linkedin": null,
+    "photo": "media/open-question.svg",
+    "open": true
   }
 ]

@@ -45,8 +45,8 @@
 
 <main>
   <div class="page-header">
-    <h2>Chapter <span>Events</span></h2>
-    <p>Technical talks, workshops, and panels &mdash; past and upcoming. Click a highlighted date on the calendar to jump to that event.</p>
+    <h2>Chapter Events</h2>
+    <p>Discover upcoming ACM Richmond talks, workshops, and panels. Browse the calendar to explore scheduled events and revisit past sessions.</p>
   </div>
 
   <div class="container">
@@ -129,16 +129,10 @@
       isPast ? '<span class="badge badge-muted">Past</span>' : '<span class="badge badge-amber">Upcoming</span>',
     ].filter(Boolean).join('');
 
+    // Remove inline Register button from event list. Details & calendar actions are available in the event modal.
     var action = '';
-    if (e.link && !isPast) {
-      action = '<a href="' + sanitizeUrl(e.link) + '" target="_blank" rel="noopener noreferrer" class="btn-sm">Register &rarr;</a>';
-    } else if (e.video_url) {
-      action = '<a href="' + sanitizeUrl(e.video_url) + '" target="_blank" rel="noopener noreferrer" class="btn-sm">Watch Recording &rarr;</a>';
-    } else if (isPast) {
-      action = '<span class="btn-muted">Recording Coming Soon</span>';
-    }
 
-    return '<div class="event-card' + (isPast ? ' past' : '') + '" data-date="' + sanitize(e.date) + '" id="ev-' + sanitize(String(e.id)) + '">' +
+    return '<div class="event-card' + (isPast ? ' past' : '') + '" role="button" tabindex="0" data-date="' + sanitize(e.date) + '" data-ev-id="' + sanitize(String(e.id)) + '" id="ev-' + sanitize(String(e.id)) + '">' +
       '<div class="event-date">' +
         '<span class="month">' + monthAbbr(e.date) + '</span>' +
         '<span class="day">'   + dayNum(e.date)    + '</span>' +
@@ -146,10 +140,9 @@
       '</div>' +
       '<div class="event-details">' +
         '<h3>' + sanitize(e.title) + '</h3>' +
-        '<p class="event-meta">' + sanitize(e.speaker || '') + (e.org ? ' &middot; ' + sanitize(e.org) : '') + '</p>' +
-        '<p>' + sanitize(e.summary || '') + '</p>' +
         '<div class="event-tags">' + tags + '</div>' +
         action +
+        '<div class="card-cta">Click for details &amp; register</div>' +
       '</div>' +
     '</div>';
   }
@@ -157,6 +150,20 @@
   fetch('data/events.json')
     .then(function(r) { return r.json(); })
     .then(function(events) {
+      // Determine local today's date string in YYYY-MM-DD to compare dates at day granularity
+      var now = new Date();
+      var todayYMD = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+
+      // Normalize event type by date: if event.date < today => past; else upcoming. Preserve explicit 'past' entries.
+      events.forEach(function(e){
+        try {
+          if (e.type !== 'past') {
+            if (e.date && e.date < todayYMD) e.type = 'past';
+            else e.type = 'upcoming';
+          }
+        } catch(err) { /* keep original */ }
+      });
+
       var upcoming = events.filter(function(e) { return e.type === 'upcoming'; })
         .sort(function(a, b) { return a.date.localeCompare(b.date); });
       var past = events.filter(function(e) { return e.type === 'past'; })
@@ -196,14 +203,17 @@
           }
 
           detailContent.innerHTML = '';
+          // Highlight all events for the date, but smoothly scroll to the first one and center it
+          var firstCard = null;
           dayItems.forEach(function(item) {
             var ev = events.find(function(e) { return e.id === item.id; });
             if (!ev) return;
             var card = document.getElementById('ev-' + ev.id);
             if (card) {
               card.classList.add('highlighted');
-              setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
-              setTimeout(function() { card.classList.remove('highlighted'); }, 2500);
+              if (!firstCard) firstCard = card;
+              // remove highlight after a short duration
+              setTimeout(function() { card.classList.remove('highlighted'); }, 2200);
             }
             detailContent.innerHTML +=
               '<div style="margin-bottom:0.5rem">' +
@@ -211,6 +221,10 @@
                 '<span style="color:var(--text-muted);font-size:0.8rem">' + sanitize(ev.time || '') + (ev.format ? ' &middot; ' + sanitize(ev.format) : '') + '</span>' +
               '</div>';
           });
+          if (firstCard) {
+            // wait a hair for layout, then smoothly center the first card in view
+            setTimeout(function() { firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 120);
+          }
         }
       });
 
@@ -220,6 +234,155 @@
       document.getElementById('upcomingList').innerHTML = '<div style="color:var(--text-muted)">Unable to load events.</div>';
       document.getElementById('pastList').innerHTML = '';
     });
+
+  // Event detail modal
+  (function() {
+    var modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.id = 'eventModalOverlay';
+    modalOverlay.innerHTML =
+      '<div class="modal" id="eventModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">' +
+        '<button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>' +
+        '<div class="modal-grid">' +
+          '<aside class="modal-date" id="modalDatePanel">' +
+            '<div class="month" id="modalMonth"></div>' +
+            '<div class="day" id="modalDay"></div>' +
+            '<div class="time" id="modalTime"></div>' +
+          '</aside>' +
+          '<div class="modal-content">' +
+            '<h4 id="modalTitle"></h4>' +
+            '<div class="meta" id="modalMeta"></div>' +
+            '<div id="modalBody" class="modal-body"></div>' +
+            '<div class="modal-actions">' +
+              '<a href="#" target="_blank" rel="noopener noreferrer" class="btn" id="modalCal">Add to Google Calendar</a>' +
+              '<button class="btn btn-muted" id="modalCloseBtn" type="button">Close</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(modalOverlay);
+
+    // wire up explicit close button in modal actions
+    var modalCloseBtn = document.getElementById('modalCloseBtn');
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+
+    var lastFocusedCard = null;
+    function closeModal() { modalOverlay.classList.remove('visible'); if (lastFocusedCard && typeof lastFocusedCard.focus === 'function') { lastFocusedCard.focus(); lastFocusedCard = null; } }
+
+    modalOverlay.addEventListener('click', function(e) {
+      if (e.target === modalOverlay) closeModal();
+      if (e.target.id === 'modalClose' || e.target.classList.contains('modal-close')) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    // Delegate clicks on event cards to open modal; also support keyboard activation
+    document.addEventListener('click', function(e) {
+      var card = e.target.closest('.event-card');
+      if (!card) return;
+      if (e.target.tagName === 'A') return; // ignore link clicks
+      openEventModal(card);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var card = e.target.closest('.event-card');
+      if (!card) return;
+      e.preventDefault();
+      openEventModal(card);
+    });
+
+    function openEventModal(card) {
+      lastFocusedCard = card;
+      var evId = card.getAttribute('data-ev-id') || card.id.replace(/^ev-/, '');
+      if (!evId) return;
+      fetch('data/events.json').then(function(r){ return r.json(); }).then(function(events){
+        var ev = events.find(function(x){ return String(x.id) === String(evId); });
+        if (!ev) return;
+        // Normalize type for this fetched event (client-side): treat past dates as 'past'
+        try {
+          var now2 = new Date();
+          var todayYMD2 = now2.getFullYear() + '-' + String(now2.getMonth()+1).padStart(2,'0') + '-' + String(now2.getDate()).padStart(2,'0');
+          if (ev.type !== 'past') {
+            if (ev.date && ev.date < todayYMD2) ev.type = 'past'; else ev.type = 'upcoming';
+          }
+        } catch (err) {}
+        document.getElementById('modalTitle').textContent = ev.title || 'Event';
+        document.getElementById('modalMeta').innerHTML = (ev.speaker ? sanitize(ev.speaker) : '') + (ev.org ? ' &middot; ' + sanitize(ev.org) : '') + ' &middot; ' + sanitize(ev.time || '') + (ev.format ? ' &middot; ' + sanitize(ev.format) : '');
+        // Format summary: split out "Session X:" blocks for clearer layout
+        var rawSummary = ev.summary || '';
+        var modalBodyHtml = '';
+        var sessions = rawSummary.split(/(?=Session\s*\d+\s*:)/i);
+        if (sessions.length > 1) {
+          sessions.forEach(function(s) {
+            var m = s.match(/^\s*(Session\s*\d+)\s*:\s*([\s\S]*)$/i);
+            if (m) {
+              modalBodyHtml += '<div class="modal-session">' +
+                '<div class="session-heading">' + sanitize(m[1]) + '</div>' +
+                '<div class="session-body">' + sanitize(m[2]) + '</div>' +
+                '</div>';
+            } else {
+              modalBodyHtml += '<p class="modal-body">' + sanitize(s) + '</p>';
+            }
+          });
+        } else {
+          modalBodyHtml = '<p class="modal-body">' + sanitize(rawSummary) + '</p>';
+        }
+        document.getElementById('modalBody').innerHTML = modalBodyHtml;
+
+        // build Google Calendar link (assume 1-hour duration, Eastern time -> UTC-4)
+        var calLink = '';
+        try {
+          var dateStr = ev.date; // YYYY-MM-DD
+          var t = ev.time || '2:00 PM';
+          var m = t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+          var hour = 14, min = 0;
+          if (m) { hour = parseInt(m[1],10); min = parseInt(m[2],10); if (/PM/i.test(m[3]) && hour<12) hour += 12; if (/AM/i.test(m[3]) && hour===12) hour = 0; }
+          // assume EDT (UTC-4)
+          var dateObj = new Date(dateStr + 'T' + String(hour).padStart(2,'0') + ':' + String(min).padStart(2,'0') + ':00');
+          // convert to UTC by adding 4 hours
+          var startUtc = new Date(dateObj.getTime() + (4*60*60*1000));
+          var endUtc = new Date(startUtc.getTime() + (60*60*1000));
+          function fmt(d){ return d.getUTCFullYear().toString() + String(d.getUTCMonth()+1).padStart(2,'0') + String(d.getUTCDate()).padStart(2,'0') + 'T' + String(d.getUTCHours()).padStart(2,'0') + String(d.getUTCMinutes()).padStart(2,'0') + '00Z'; }
+          calLink = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(ev.title || 'ACM Richmond Event') + '&dates=' + fmt(startUtc) + '/' + fmt(endUtc) + '&details=' + encodeURIComponent(ev.summary || '') + '&location=' + encodeURIComponent(ev.format || 'Virtual') + '&sf=true&output=xml';
+        } catch (err) {
+          calLink = '#';
+        }
+
+        var modalCal = document.getElementById('modalCal');
+        modalCal.href = calLink;
+
+        // populate date panel
+        try {
+          var d = new Date(ev.date + 'T00:00:00');
+          document.getElementById('modalMonth').textContent = d.toLocaleString('en-US', { month: 'short' });
+          document.getElementById('modalDay').textContent = String(d.getDate());
+        } catch (err) {
+          document.getElementById('modalMonth').textContent = monthAbbr(ev.date);
+          document.getElementById('modalDay').textContent = dayNum(ev.date);
+        }
+        document.getElementById('modalTime').textContent = sanitize(ev.time || '');
+
+        // disable calendar action for past events
+        var modalCal = document.getElementById('modalCal');
+        if (ev.type === 'past') {
+          modalCal.classList.add('disabled');
+          modalCal.href = '#';
+          modalCal.setAttribute('aria-disabled', 'true');
+          modalCal.setAttribute('tabindex', '-1');
+          modalCal.textContent = 'Event Passed';
+        } else {
+          modalCal.classList.remove('disabled');
+          modalCal.href = calLink;
+          modalCal.setAttribute('aria-disabled', 'false');
+          modalCal.removeAttribute('tabindex');
+          modalCal.textContent = 'Add to Google Calendar';
+        }
+        modalOverlay.classList.add('visible');
+        // move focus into modal for accessibility
+        document.getElementById('modalClose').focus();
+      });
+    }
+  })();
 </script>
 </body>
 </html>
