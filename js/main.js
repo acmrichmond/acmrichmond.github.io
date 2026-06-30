@@ -49,9 +49,9 @@ function renderNav(activePage) {
 
   const links = [
     { href: 'index.html',     label: 'Home',      id: 'home'      },
+    { href: 'about.html',     label: 'About',     id: 'about'     },
     { href: 'events.html',    label: 'Events',    id: 'events'    },
     { href: 'media.html',     label: 'Media',     id: 'media'     },
-    { href: 'about.html',     label: 'About',     id: 'about'     },
     { href: 'join.html',      label: 'Join Us',   id: 'join'      },
     { href: 'volunteer.html', label: 'Volunteer', id: 'volunteer' },
   ];
