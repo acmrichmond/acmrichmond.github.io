@@ -19,6 +19,7 @@
   <link rel="icon" type="image/png" href="acm-logo.png">
   <link rel="apple-touch-icon" href="acm-logo.png">
   <link rel="stylesheet" href="css/style.css">
+
   <script>
     const _t = localStorage.getItem('theme');
     if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
@@ -44,7 +45,6 @@
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-badge">Richmond, VA &mdash; Est. May 2026</div>
@@ -55,73 +55,24 @@
         <a href="events.html" class="btn-outline-large">Explore Events</a>
       </div>
       <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">4+</span>
-          <span class="stat-label">Events Hosted</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">100+</span>
-          <span class="stat-label">Attendees</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">Free</span>
-          <span class="stat-label">To Attend</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">6</span>
-          <span class="stat-label">Officers</span>
-        </div>
+        <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Events Hosted</span></div>
+        <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Attendees</span></div>
+        <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To Attend</span></div>
+        <div class="stat"><span class="stat-num">6</span><span class="stat-label">Officers</span></div>
       </div>
     </div>
   </section>
 
   <div class="container">
-
-    <!-- QUICK LINKS -->
     <div class="quick-links reveal-stagger" style="margin-bottom:3.5rem">
-      <a href="events.html" class="quick-link-card">
-        <span class="ql-icon">&#128197;</span>
-        <span class="ql-label">Events</span>
-      </a>
-      <a href="media.html" class="quick-link-card">
-        <span class="ql-icon">&#127909;</span>
-        <span class="ql-label">Media</span>
-      </a>
-      <a href="about.html" class="quick-link-card">
-        <span class="ql-icon">&#127963;&#65039;</span>
-        <span class="ql-label">About</span>
-      </a>
-      <a href="join.html" class="quick-link-card">
-        <span class="ql-icon">&#129309;</span>
-        <span class="ql-label">Join Us</span>
-      </a>
-      <a href="volunteer.html" class="quick-link-card">
-        <span class="ql-icon">&#128587;</span>
-        <span class="ql-label">Volunteer</span>
-      </a>
+      <a href="events.html" class="quick-link-card"><span class="ql-icon">&#128197;</span><span class="ql-label">Events</span></a>
+      <a href="media.html" class="quick-link-card"><span class="ql-icon">&#127909;</span><span class="ql-label">Media</span></a>
+      <a href="about.html" class="quick-link-card"><span class="ql-icon">&#127963;&#65039;</span><span class="ql-label">About</span></a>
+      <a href="join.html" class="quick-link-card"><span class="ql-icon">&#129309;</span><span class="ql-label">Join Us</span></a>
+      <a href="volunteer.html" class="quick-link-card"><span class="ql-icon">&#128587;</span><span class="ql-label">Apply for an Event</span></a>
     </div>
 
-    <!-- NEXT EVENT SPOTLIGHT (populated by JS) -->
     <div id="nextEventSpotlight"></div>
-
-    <!-- STAY CONNECTED -->
-    <section class="stay-connected reveal">
-      <h3>Stay Connected</h3>
-      <p class="stay-connected-subtitle">Get notified about upcoming events, speaker announcements, and chapter news. No spam, ever.</p>
-      <!--
-        Email signup: Create a Google Form with one email question, then update EMAIL_FORM_URL
-        in the script below with your form's viewform URL (use pre-fill format for best UX):
-        https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?entry.YOUR_ENTRY_ID=
-      -->
-      <form id="stayConnectedForm" novalidate>
-        <div class="email-form-row">
-          <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required autocomplete="email">
-          <button type="submit" class="btn-submit">Notify Me</button>
-        </div>
-        <p class="email-note">We respect your privacy. Unsubscribe anytime.</p>
-      </form>
-    </section>
-
     <!-- CHAPTER LEADERSHIP -->
     <section style="margin-bottom:4rem">
       <h2 class="section-title">Chapter <span>Leadership</span></h2>
@@ -129,9 +80,8 @@
         <div style="text-align:center;color:var(--text-muted);padding:2rem;grid-column:1/-1">Loading team&hellip;</div>
       </div>
     </section>
-
-    <!-- CORE PILLARS -->
-    <section>
+<!-- CORE PILLARS -->
+    <section style="margin-bottom:3.5rem">
       <h2 class="section-title">What We <span>Do</span></h2>
       <div class="pillars-grid reveal-stagger">
         <div class="pillar-card">
@@ -153,6 +103,18 @@
       </div>
     </section>
 
+    <section class="stay-connected reveal" style="margin-bottom:3.5rem">
+      <h3>Stay Connected</h3>
+      <p class="stay-connected-subtitle">Get notified about upcoming events, speaker announcements, and chapter news. No spam, ever.</p>
+      <form id="stayConnectedForm" novalidate>
+        <div class="email-form-row">
+          <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required autocomplete="email">
+          <button type="submit" class="btn-submit">Notify Me</button>
+        </div>
+        <p class="email-note">We respect your privacy. Unsubscribe anytime.</p>
+      </form>
+    </section>
+
   </div>
 </main>
 
@@ -170,7 +132,7 @@
         <li><a href="media.html">Media</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="join.html">Join Us</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="volunteer.html">Apply for an Event</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -179,16 +141,14 @@
         <li><a href="join.html">Apply to Speak</a></li>
         <li><a href="join.html">Become a Member</a></li>
         <li><a href="join.html">Officer Roles</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="volunteer.html">Apply for an Event</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
-           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
-        <a href="https://www.youtube.com/@ACMChapterRVA"
-           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/@ACMChapterRVA" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
       </div>
     </div>
   </div>
@@ -204,43 +164,80 @@
 
   var EMAIL_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd-xBwD9xNw3G0Giyvi65U-GrFVs9nfEcXkPI0r7A0BqIA10Q/viewform';
 
-  document.getElementById('stayConnectedForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var email = document.getElementById('emailInput').value.trim();
-    if (!email) return;
-    window.open(EMAIL_FORM_URL, '_blank');
-    this.innerHTML = '<p style="color:var(--cyan-glow);font-weight:600;font-size:0.95rem;text-align:center">Thanks! Enter your email in the tab that just opened to complete your signup.</p>';
-  });
+  var stayConnectedForm = document.getElementById('stayConnectedForm');
+  if (stayConnectedForm) {
+    stayConnectedForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('emailInput').value.trim();
+      if (!email) return;
+      window.open(EMAIL_FORM_URL, '_blank');
+      this.innerHTML = '<p style="color:var(--cyan-glow);font-weight:600;font-size:0.95rem;text-align:center">Thanks! Enter your email in the tab that just opened to complete your signup.</p>';
+    });
+  }
 
   fetch('data/events.json')
-    .then(function(r) { return r.json(); })
+    .then(function(r) {
+      if (!r.ok) throw new Error('events.json HTTP ' + r.status);
+      return r.json();
+    })
     .then(function(events) {
-      var upcoming = events.filter(function(e) { return e.type === 'upcoming'; })
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      var dated = (events || []).filter(function(e) {
+        if (!e || !e.date) return false;
+        var d = new Date(e.date + 'T00:00:00');
+        return !isNaN(d);
+      });
+
+      var upcoming = dated
+        .filter(function(e) { return new Date(e.date + 'T00:00:00') >= today; })
         .sort(function(a, b) { return a.date.localeCompare(b.date); });
-      var next = upcoming[0];
+
+      var past = dated
+        .filter(function(e) { return new Date(e.date + 'T00:00:00') < today; })
+        .sort(function(a, b) { return b.date.localeCompare(a.date); });
+
+      var selected = upcoming.length ? upcoming[0] : (past.length ? past[0] : null);
+      var isPast = !upcoming.length && !!past.length;
+
       var el = document.getElementById('nextEventSpotlight');
-      if (!next) { el.innerHTML = ''; return; }
+      if (!el || !selected) {
+        if (el) el.innerHTML = '';
+        return;
+      }
+
       el.innerHTML =
         '<div class="next-event-spotlight reveal" style="margin-bottom:4rem">' +
           '<div class="date-badge">' +
-            '<div class="month">' + monthAbbr(next.date) + '</div>' +
-            '<div class="day">'   + dayNum(next.date)   + '</div>' +
-            '<div class="year">'  + yearNum(next.date)  + '</div>' +
+            '<div class="month">' + monthAbbr(selected.date) + '</div>' +
+            '<div class="day">' + dayNum(selected.date) + '</div>' +
+            '<div class="year">' + yearNum(selected.date) + '</div>' +
           '</div>' +
           '<div>' +
-            '<div style="font-size:0.75rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem">Next Event</div>' +
-            '<div class="spotlight-title">'  + sanitize(next.title)   + '</div>' +
-            '<div class="spotlight-meta">'   + sanitize(next.speaker || '') + (next.org ? ' &middot; ' + sanitize(next.org) : '') + '</div>' +
-            '<div class="spotlight-detail">' + sanitize(next.time || '') + (next.format ? ' &middot; ' + sanitize(next.format) : '') + '</div>' +
+            '<div style="font-size:0.75rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem">' +
+              (isPast ? 'Most Recent Event' : 'Next Event') +
+            '</div>' +
+            '<div class="spotlight-title">' + sanitize(selected.title || '') + '</div>' +
+            '<div class="spotlight-meta">' + sanitize(selected.speaker || '') + (selected.org ? ' &middot; ' + sanitize(selected.org) : '') + '</div>' +
+            '<div class="spotlight-detail">' + sanitize(selected.time || '') + (selected.format ? ' &middot; ' + sanitize(selected.format) : '') + '</div>' +
           '</div>' +
-          (next.link ? '<a href="' + sanitizeUrl(next.link) + '" target="_blank" rel="noopener noreferrer" class="btn">Register &rarr;</a>' : '<span></span>') +
+          (
+            !isPast
+              ? (selected.link
+                  ? '<a href="' + sanitizeUrl(selected.link) + '" target="_blank" rel="noopener noreferrer" class="btn">Register &rarr;</a>'
+                  : '<span class="btn-muted">Registration Coming Soon</span>')
+              : '<span class="btn-muted">Recording Coming Soon</span>'
+          ) +
         '</div>';
+
       initScrollReveal();
     })
-    .catch(function() {
-      document.getElementById('nextEventSpotlight').innerHTML = '';
+    .catch(function(err) {
+      console.error('Event spotlight load error:', err);
+      var el = document.getElementById('nextEventSpotlight');
+      if (el) el.innerHTML = '';
     });
-
   fetch('data/team.json')
     .then(function(r) { return r.json(); })
     .then(function(team) {
