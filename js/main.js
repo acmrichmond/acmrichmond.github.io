@@ -53,7 +53,6 @@ function renderNav(activePage) {
     { href: 'events.html',    label: 'Events',    id: 'events'    },
     { href: 'media.html',     label: 'Media',     id: 'media'     },
     { href: 'join.html',      label: 'Join Us',   id: 'join'      },
-    { href: 'volunteer.html', label: 'Volunteer', id: 'volunteer' },
   ];
 
   list.innerHTML = links
