@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self' https://acmrichmond.goatcounter.com; object-src 'none'; base-uri 'self'; frame-src 'none';">
   <title>ACM Richmond Professional Chapter</title>
   <meta name="description" content="Richmond, VA's ACM chapter — connecting tech innovators, educators, and leaders through talks, workshops, and community.">
   <meta property="og:type" content="website">
@@ -38,6 +38,7 @@
     </a>
     <div class="nav-right" id="navRight">
       <nav><ul id="navList"></ul></nav>
+      <span id="visitorCount" style="color:var(--cyan-glow);font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:4px;" aria-label="Visitor count">&#128064; &hellip;</span>
       <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
     </div>
     <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
@@ -156,6 +157,19 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script data-goatcounter="https://acmrichmond.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+  fetch('https://acmrichmond.goatcounter.com/counter/TOTAL.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var el = document.getElementById('visitorCount');
+      if (el) el.innerHTML = '&#128064; ' + data.count_unique;
+    })
+    .catch(function() {
+      var el = document.getElementById('visitorCount');
+      if (el) el.textContent = '';
+    });
+</script>
 <script>
   renderNav('home');
 
