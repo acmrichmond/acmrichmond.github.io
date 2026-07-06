@@ -1,5 +1,6 @@
 [
   {
+    "id": "jyostna-seelam",
     "name": "Jyostna Seelam",
     "role": "Chair",
     "initials": "JS",
@@ -9,6 +10,7 @@
     "open": false
   },
   {
+    "id": "rasheed-shaik",
     "name": "Abdul Rasheed Shaik",
     "role": "Vice Chair",
     "initials": "AR",
@@ -18,6 +20,7 @@
     "open": false
   },
   {
+    "id": "khadarvali-shaik",
     "name": "Mr Khadarvali Shaik",
     "role": "Membership Chair",
     "initials": "KS",
@@ -27,29 +30,31 @@
     "open": false
   },
   {
+    "id": "ankita-banerjee",
     "name": "Ankita Banerjee",
     "role": "Treasurer",
     "initials": "AB",
-    "bio": "As Treasurer, Ankita manages chapter finances and compliance, maintains records, and coordinates communication to ensure we stay aligned with ACM standards. We are dedicated to building an inclusive computing community that connects professionals, researchers, students, and technology enthusiasts through learning, collaboration, and innovation. Together, we create opportunities to grow, share knowledge, and make a lasting impact on the technology ecosystem.",
+    "bio": "As Treasurer, Ankita manages chapter finances and compliance, maintains financial records, and coordinates with officers to ensure the chapter remains fiscally responsible and aligned with ACM standards — providing the financial foundation that enables ACM Richmond to deliver free, high-quality programs to the community.",
     "linkedin": "https://www.linkedin.com/in/ankita-banerjee-b74615118/",
     "photo": "media/Ankita_Banerjee_Treasurer.jpeg",
     "open": false
   },
   {
+    "id": "dipanjan-sen",
     "name": "Dipanjan Sen",
     "role": "Secretary",
-    "initials": "KA",
-    "bio": "Secretary coordinating chapter communications and records.",
+    "initials": "DS",
+    "bio": "As Chapter Secretary, Dipanjan maintains the official records and correspondence of ACM Richmond, ensuring transparency and institutional continuity. He documents chapter proceedings, coordinates formal communications with members and partner organizations, and manages archival records — serving as the administrative backbone that keeps the chapter's operations running smoothly and accountably.",
     "linkedin": "https://www.linkedin.com/in/dipanjan-sen/",
     "photo": "media/dipanjan_sen_.secretary.jpeg",
     "open": false
-  }
-  ,
+  },
   {
+    "id": "webmaster-open",
     "name": "Open Position",
     "role": "Web Master",
     "initials": "WM",
-    "bio": "Open role: maintain the ACM Richmond online presence.",
+    "bio": "The Web Master shapes ACM Richmond's digital identity, overseeing the chapter website's design, content accuracy, and technical performance. This role implements new features, maintains infrastructure, and collaborates with officers to ensure our online presence accurately reflects chapter programs, events, and leadership — keeping Richmond's tech community connected and informed.",
     "linkedin": null,
     "photo": "media/open-question.svg",
     "open": true

@@ -22,7 +22,7 @@
 
   <script>
     const _t = localStorage.getItem('theme');
-    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    if (_t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </head>
 <body>
@@ -38,7 +38,7 @@
     </a>
     <div class="nav-right" id="navRight">
       <nav><ul id="navList"></ul></nav>
-      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+      <button class="theme-toggle-btn" id="themeToggle">&#127769; Dark</button>
     </div>
     <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
   </div>
@@ -68,11 +68,12 @@
       <a href="media.html" class="quick-link-card"><span class="ql-icon">&#127909;</span><span class="ql-label">Media</span></a>
       <a href="about.html" class="quick-link-card"><span class="ql-icon">&#127963;&#65039;</span><span class="ql-label">About</span></a>
       <a href="join.html" class="quick-link-card"><span class="ql-icon">&#129309;</span><span class="ql-label">Join Us</span></a>
+      <a href="https://docs.google.com/forms/d/1eMYXUwFsFEixy_sfY6fhcHXIHY5MrTW9e2OGOR9u44U" target="_blank" rel="noopener noreferrer" class="quick-link-card"><span class="ql-icon">&#127908;</span><span class="ql-label">Apply to Speak</span></a>
     </div>
 
     <div id="nextEventSpotlight"></div>
     <!-- CHAPTER LEADERSHIP -->
-    <section style="margin-bottom:4rem">
+    <section id="leadership" style="margin-bottom:4rem">
       <h2 class="section-title">Chapter <span>Leadership</span></h2>
       <div class="officer-grid" id="officerGrid">
         <div style="text-align:center;color:var(--text-muted);padding:2rem;grid-column:1/-1">Loading team&hellip;</div>
@@ -97,6 +98,45 @@
         <div class="pillar-card">
           <h3>&#127760; Networking</h3>
           <p>Connect with Richmond's tech community, find collaborators, mentors, and career opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY JOIN US -->
+    <section style="margin-bottom:4rem">
+      <h2 class="section-title">Why <span>Join Us</span></h2>
+      <div class="why-join-grid reveal-stagger">
+        <div class="why-join-card">
+          <div class="why-icon">&#128188;</div>
+          <h3>For Professionals</h3>
+          <p>Share your expertise with the Richmond tech community, expand your professional network, and connect with peers driving innovation across industries. Every event is a platform to grow your presence and make a meaningful contribution.</p>
+        </div>
+        <div class="why-join-card">
+          <div class="why-icon">&#127979;</div>
+          <h3>For Learners</h3>
+          <p>Gain exposure to real-world technology through expert talks and hands-on workshops. Connect with mentors, discover career paths, and develop skills that go beyond any classroom or certification.</p>
+        </div>
+        <div class="why-join-card">
+          <div class="why-icon">&#129309;</div>
+          <h3>For the Community</h3>
+          <p>Help bridge the gap between industry and academia in Greater Richmond. By participating, you foster a culture of collaboration, inclusion, and innovation that benefits the entire regional tech ecosystem.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERSHIPS -->
+    <section class="partnerships-section reveal" style="margin-bottom:4rem">
+      <h2 class="section-title">Partners &amp; <span>Collaborators</span></h2>
+      <p class="partnerships-sub">Proud to collaborate with organizations advancing technology and computing across the region. More partnerships on the way.</p>
+      <div class="partner-logos">
+        <div class="partner-tile partner-tile-dark">
+          <img src="media/ieee-cs-logo.png" alt="IEEE Computer Society" class="partner-logo">
+          <span class="partner-name partner-name-light">IEEE Computer Society</span>
+        </div>
+        <div class="partner-tile partner-tile-coming">
+          <span class="partner-coming-icon">&#43;</span>
+          <span class="partner-name partner-name-muted">Your Organization</span>
+          <span class="partner-coming-tag">Coming Soon</span>
         </div>
       </div>
     </section>
@@ -130,7 +170,7 @@
         <li><a href="media.html">Media</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="join.html">Join Us</a></li>
-         <li><a href="join.html">Apply for an Event</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -144,8 +184,8 @@
     <div class="footer-col">
       <h4>Connect</h4>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
-        <a href="https://www.youtube.com/@ACMChapterRVA" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="media/icons/linkedin.svg" alt="" class="social-icon"></a>
+        <a href="https://www.youtube.com/@ACMChapterRVA" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="media/icons/youtube.svg" alt="" class="social-icon"></a>
       </div>
     </div>
   </div>
@@ -222,7 +262,7 @@
           (
             !isPast
               ? (selected.link
-                  ? '<a href="' + sanitizeUrl(selected.link) + '" target="_blank" rel="noopener noreferrer" class="btn">Register &rarr;</a>'
+                  ? '<a href="' + sanitizeUrl(selected.link) + '" target="_blank" rel="noopener noreferrer" class="btn">' + sanitize(selected.link_label || 'Register') + ' &rarr;</a>'
                   : '<span class="btn-muted">Registration Coming Soon</span>')
               : '<span class="btn-muted">Recording Coming Soon</span>'
           ) +

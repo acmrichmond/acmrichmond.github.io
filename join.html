@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script>
     const _t = localStorage.getItem('theme');
-    if (_t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    if (_t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </head>
 <body>
@@ -37,7 +37,7 @@
     </a>
     <div class="nav-right" id="navRight">
       <nav><ul id="navList"></ul></nav>
-      <button class="theme-toggle-btn" id="themeToggle">&#9728;&#65039; Light</button>
+      <button class="theme-toggle-btn" id="themeToggle">&#127769; Dark</button>
     </div>
     <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
   </div>
@@ -46,14 +46,14 @@
 <main>
   <div class="page-header">
     <h2>Join <span>ACM Richmond</span></h2>
-    <p>There are many ways to get involved &mdash; as a member, speaker, partner, officer, or volunteer.</p>
+    <p>There are many ways to get involved &mdash; as a member, speaker, partner, or chapter officer.</p>
   </div>
 
   <div class="container">
 
     <div class="notice reveal">
-      <span>&#128274;</span>
-      <span><strong>Content Security:</strong> All speaker and event content is reviewed and published exclusively by officers via GitHub pull request. Application forms link to officer-controlled Google Forms &mdash; no user-submitted content ever appears on this site without review.</span>
+      <span>&#10003;</span>
+      <span>Our speakers and events are personally curated by the ACM Richmond officer team. Every application is reviewed by a real person &mdash; we read every submission and follow up directly.</span>
     </div>
 
     <!-- JOIN CARDS -->
@@ -72,7 +72,6 @@
         <h3>Apply to Speak</h3>
         <p>Share your expertise with the Richmond tech community. We welcome talks on AI, software engineering, systems, security, and more.</p>
         <div class="join-action">
-          <!-- Replace with your Google Form URL for speaker applications -->
           <a href="https://docs.google.com/forms/d/1eMYXUwFsFEixy_sfY6fhcHXIHY5MrTW9e2OGOR9u44U" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
         </div>
       </div>
@@ -82,19 +81,10 @@
         <h3>Apply for Officer Role</h3>
         <p>Help shape the chapter's future. Open roles include social media, programming, outreach, and more as we grow.</p>
         <div class="join-action">
-          <!-- Replace with your Google Form URL for officer applications -->
           <a href="https://docs.google.com/forms/d/e/1FAIpQLScZHKF9UhTcBZkwYAfJ_ID4JYwEUC-y-1XF-Ft4G_ESHI5Ycw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-sm">Apply &rarr;</a>
         </div>
       </div>
 
-      <div class="join-card">
-        <div class="join-icon">&#128587;</div>
-        <h3>Volunteer</h3>
-        <p>Help run events &mdash; as a moderator, social media coordinator, logistics lead, or workshop facilitator. Flexible commitment.</p>
-        <div class="join-action">
-          <a href="volunteer.html" class="btn-sm">View Slots &rarr;</a>
-        </div>
-      </div>
     </div>
 
     <!-- OPEN POSITIONS -->
@@ -122,7 +112,7 @@
         <li><a href="media.html">Media</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="join.html">Join Us</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -131,16 +121,15 @@
         <li><a href="join.html">Apply to Speak</a></li>
         <li><a href="join.html">Become a Member</a></li>
         <li><a href="join.html">Officer Roles</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
-           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="media/icons/linkedin.svg" alt="" class="social-icon"></a>
         <a href="https://www.youtube.com/@ACMChapterRVA"
-           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">&#9654;</a>
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="media/icons/youtube.svg" alt="" class="social-icon"></a>
       </div>
     </div>
   </div>

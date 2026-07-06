@@ -24,18 +24,18 @@ function sanitizeUrl(url) {
 function initTheme() {
   const btn = document.getElementById('themeToggle');
   if (!btn) return;
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  btn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
   btn.addEventListener('click', () => {
-    const nowLight = document.documentElement.getAttribute('data-theme') === 'light';
-    if (nowLight) {
+    const nowDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (nowDark) {
       document.documentElement.removeAttribute('data-theme');
-      btn.textContent = '☀️ Light';
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
       btn.textContent = '🌙 Dark';
       localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀️ Light';
+      localStorage.setItem('theme', 'dark');
     }
   });
 }
@@ -53,6 +53,7 @@ function renderNav(activePage) {
     { href: 'events.html',    label: 'Events',    id: 'events'    },
     { href: 'media.html',     label: 'Media',     id: 'media'     },
     { href: 'join.html',      label: 'Join Us',   id: 'join'      },
+    { href: 'contact.html',   label: 'Contact',   id: 'contact'   },
   ];
 
   list.innerHTML = links
@@ -70,13 +71,23 @@ function renderNav(activePage) {
 // OFFICER CARD TEMPLATE
 // ===========================
 function officerCardHTML(m) {
+  const LI_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="vertical-align:-0.1em;margin-right:3px" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
+
   const photo = m.photo
     ? `<img src="${sanitizeUrl(m.photo)}" alt="${sanitize(m.name)}" loading="lazy">`
     : sanitize(m.initials || '??');
 
   const linkedin = m.linkedin
-    ? `<div class="officer-links"><a href="${sanitizeUrl(m.linkedin)}" target="_blank" rel="noopener noreferrer" class="officer-linkedin">&#128101; LinkedIn</a></div>`
-    : `<div class="officer-links"><span class="officer-linkedin-placeholder">Connect on LinkedIn</span></div>`;
+    ? `<a href="${sanitizeUrl(m.linkedin)}" target="_blank" rel="noopener noreferrer" class="officer-linkedin">${LI_SVG} LinkedIn</a>`
+    : '';
+
+  const moreInfo = (m.id && !m.open)
+    ? `<a href="officer.html?id=${sanitize(m.id)}" class="officer-more-info">More Info &rarr;</a>`
+    : '';
+
+  const links = (linkedin || moreInfo)
+    ? `<div class="officer-links">${linkedin}${moreInfo}</div>`
+    : `<div class="officer-links"><span class="officer-linkedin-placeholder">Position Open &mdash; <a href="join.html" style="color:var(--cyan-glow)">Apply</a></span></div>`;
 
   return `
     <div class="officer-card">
@@ -85,7 +96,7 @@ function officerCardHTML(m) {
       <div class="officer-role-badge">${sanitize(m.role)}</div>
       <div class="officer-divider"></div>
       <p class="officer-bio">${sanitize(m.bio || 'ACM Richmond Chapter Officer.')}</p>
-      ${linkedin}
+      ${links}
     </div>
   `;
 }

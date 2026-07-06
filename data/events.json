@@ -1,5 +1,21 @@
 [
   {
+    "id": "evt-005",
+    "title": "From Invention to Impact",
+    "speaker": "Abhiruchi Dakshinkar",
+    "org": "IEEE Richmond Computer Society Chapter",
+    "date": "2026-07-12",
+    "time": "10:00 AM - 11:00 AM EST",
+    "format": "Virtual",
+    "link": "https://calendar.google.com/calendar/u/0/r/eventedit/copy/NGZlMm8zMnBlMXZmbmlmYTNodWpiNWdkczkgYWNtLnJ2YWNoYXB0ZXJAbQ/YWJkdWxyYXNoZWVkc2s5QGdtYWlsLmNvbQ",
+    "type": "upcoming",
+    "link_label": "Add to Calendar",
+    "audience": "All Members",
+    "summary": "We're back with another engaging session featuring insightful topics relevant across industries, in proud collaboration with the IEEE Richmond Computer Society Chapter. Speaker Abhiruchi Dakshinkar shares her journey on how to convert your passions into patents — from invention to real-world impact.",
+    "video_url": null,
+    "photos_url": null
+  },
+  {
     "id": "evt-004",
     "title": "Trustworthy AI in Production: Building Reliable, Secure, and Observable AI Systems",
     "speaker": "Ravi Teja Reddy Mandala",
@@ -8,8 +24,8 @@
     "date": "2026-06-27",
     "time": "2:00 PM EST",
     "format": "Virtual",
-    "link": "https://calendar.google.com/calendar/u/0/r/eventedit?text=Trustworthy%20AI%20in%20Production%3A%20Building%20Reliable%2C%20Secure%2C%20and%20Observable%20AI%20Systems&dates=20260627T180000Z/20260627T190000Z&details=An%20engineering%20talk%20focusing%20on%20strategies%20and%20frameworks%20required%20for%20building%20reliable%2C%20secure%2C%20and%20highly%20observable%20AI%20systems%20in%20production%20environments.&location=Virtual&sf=true&output=xml",
-    "type": "upcoming",
+    "link": null,
+    "type": "past",
     "audience": "Software Engineers & Architects",
     "summary": "An engineering talk focusing on strategies and frameworks required for building reliable, secure, and highly observable AI systems in production environments.",
     "video_url": null,
