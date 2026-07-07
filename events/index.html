@@ -10,15 +10,15 @@
   <meta property="og:site_name" content="ACM Richmond Professional Chapter">
   <meta property="og:title" content="Events &mdash; ACM Richmond">
   <meta property="og:description" content="Upcoming and past technical talks, panels, and workshops from ACM Richmond.">
-  <meta property="og:url" content="https://acmrichmond.org/events.html">
+  <meta property="og:url" content="https://acmrichmond.org/events">
   <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Events &mdash; ACM Richmond">
   <meta name="twitter:description" content="Upcoming and past technical talks, panels, and workshops from ACM Richmond.">
   <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
-  <link rel="icon" type="image/png" href="acm-logo.png">
-  <link rel="apple-touch-icon" href="acm-logo.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="/acm-logo.png">
+  <link rel="apple-touch-icon" href="/acm-logo.png">
+  <link rel="stylesheet" href="/css/style.css">
   <script>
     const _t = localStorage.getItem('theme');
     if (_t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
@@ -28,8 +28,8 @@
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="brand">
-      <img src="acm-logo.png" alt="ACM Richmond Logo">
+    <a href="/" class="brand">
+      <img src="/acm-logo.png" alt="ACM Richmond Logo">
       <div class="brand-text">
         <h1>ACM Richmond</h1>
         <p>Professional Chapter</p>
@@ -79,35 +79,35 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <img src="/acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
       <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="join.html">Join Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/join/">Join Us</a></li>
+        <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
       <ul>
-        <li><a href="join.html">Apply to Speak</a></li>
-        <li><a href="join.html">Become a Member</a></li>
-        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="/join/">Apply to Speak</a></li>
+        <li><a href="/join/">Become a Member</a></li>
+        <li><a href="/join/">Officer Roles</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
-           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="media/icons/linkedin.svg" alt="" class="social-icon"></a>
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="/media/icons/linkedin.svg" alt="" class="social-icon"></a>
         <a href="https://www.youtube.com/@ACMChapterRVA"
-           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="media/icons/youtube.svg" alt="" class="social-icon"></a>
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="/media/icons/youtube.svg" alt="" class="social-icon"></a>
       </div>
     </div>
   </div>
@@ -117,7 +117,7 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 <script>
   renderNav('events');
 
@@ -146,7 +146,7 @@
     '</div>';
   }
 
-  fetch('data/events.json')
+  fetch("/data/events.json")
     .then(function(r) { return r.json(); })
     .then(function(events) {
       // Determine local today's date string in YYYY-MM-DD to compare dates at day granularity
@@ -294,7 +294,7 @@
       lastFocusedCard = card;
       var evId = card.getAttribute('data-ev-id') || card.id.replace(/^ev-/, '');
       if (!evId) return;
-      fetch('data/events.json').then(function(r){ return r.json(); }).then(function(events){
+      fetch("/data/events.json").then(function(r){ return r.json(); }).then(function(events){
         var ev = events.find(function(x){ return String(x.id) === String(evId); });
         if (!ev) return;
         // Normalize type for this fetched event (client-side): treat past dates as 'past'
