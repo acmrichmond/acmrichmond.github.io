@@ -6,9 +6,9 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
   <title>Officer Profile &mdash; ACM Richmond</title>
   <meta name="description" content="ACM Richmond chapter officer profile and biography.">
-  <link rel="icon" type="image/png" href="acm-logo.png">
-  <link rel="apple-touch-icon" href="acm-logo.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="/acm-logo.png">
+  <link rel="apple-touch-icon" href="/acm-logo.png">
+  <link rel="stylesheet" href="/css/style.css">
   <script>
     const _t = localStorage.getItem('theme');
     if (_t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
@@ -18,8 +18,8 @@
 
 <header>
   <div class="nav-container">
-    <a href="index.html" class="brand">
-      <img src="acm-logo.png" alt="ACM Richmond Logo">
+    <a href="/" class="brand">
+      <img src="/acm-logo.png" alt="ACM Richmond Logo">
       <div class="brand-text">
         <h1>ACM Richmond</h1>
         <p>Professional Chapter</p>
@@ -35,7 +35,7 @@
 
 <main>
   <div class="container" style="padding-top:2rem">
-    <a href="index.html#leadership" class="gallery-back" style="display:inline-block;margin-bottom:2rem">&#8592; Back to Leadership</a>
+    <a href="/#leadership" class="gallery-back" style="display:inline-block;margin-bottom:2rem">&#8592; Back to Leadership</a>
     <div id="officerProfile">
       <div style="text-align:center;color:var(--text-muted);padding:4rem">Loading&hellip;</div>
     </div>
@@ -45,35 +45,35 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <img src="/acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
       <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="join.html">Join Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/join/">Join Us</a></li>
+        <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
       <ul>
-        <li><a href="join.html">Apply to Speak</a></li>
-        <li><a href="join.html">Become a Member</a></li>
-        <li><a href="join.html">Officer Roles</a></li>
+        <li><a href="/join/">Apply to Speak</a></li>
+        <li><a href="/join/">Become a Member</a></li>
+        <li><a href="/join/">Officer Roles</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all"
-           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="media/icons/linkedin.svg" alt="" class="social-icon"></a>
+           target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="/media/icons/linkedin.svg" alt="" class="social-icon"></a>
         <a href="https://www.youtube.com/@ACMChapterRVA"
-           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="media/icons/youtube.svg" alt="" class="social-icon"></a>
+           target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="/media/icons/youtube.svg" alt="" class="social-icon"></a>
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 <script>
   renderNav('');
 
@@ -92,20 +92,20 @@
   var params = new URLSearchParams(window.location.search);
   var officerId = params.get('id');
 
-  fetch('data/team.json')
+  fetch("/data/team.json")
     .then(function(r) { return r.json(); })
     .then(function(team) {
       var m = officerId ? team.find(function(o) { return o.id === officerId; }) : null;
       if (!m) {
         document.getElementById('officerProfile').innerHTML =
-          '<p style="text-align:center;color:var(--text-muted);padding:4rem">Officer profile not found. <a href="index.html#leadership" style="color:var(--cyan-glow)">View all leadership &rarr;</a></p>';
+          '<p style="text-align:center;color:var(--text-muted);padding:4rem">Officer profile not found. <a href="/#leadership" style="color:var(--cyan-glow)">View all leadership &rarr;</a></p>';
         return;
       }
 
       document.title = sanitize(m.name) + ' &mdash; ACM Richmond';
 
       var photoHTML = m.photo
-        ? '<img src="' + sanitizeUrl(m.photo) + '" alt="' + sanitize(m.name) + '" class="profile-photo">'
+        ? '<img src="' + sanitizeUrl(absoluteAssetPath(m.photo)) + '" alt="' + sanitize(m.name) + '" class="profile-photo">'
         : '<div class="profile-photo-initials">' + sanitize(m.initials || '??') + '</div>';
 
       var linkedinBtn = m.linkedin

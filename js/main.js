@@ -18,6 +18,13 @@ function sanitizeUrl(url) {
   return s;
 }
 
+function absoluteAssetPath(url) {
+  if (!url) return url;
+  const s = String(url).trim();
+  if (!s || s.startsWith('/') || /^https?:/.test(s) || s.startsWith('data:')) return s;
+  return '/' + s;
+}
+
 // ===========================
 // THEME
 // ===========================
@@ -48,12 +55,12 @@ function renderNav(activePage) {
   if (!list) return;
 
   const links = [
-    { href: 'index.html',     label: 'Home',      id: 'home'      },
-    { href: 'about.html',     label: 'About',     id: 'about'     },
-    { href: 'events.html',    label: 'Events',    id: 'events'    },
-    { href: 'media.html',     label: 'Media',     id: 'media'     },
-    { href: 'join.html',      label: 'Join Us',   id: 'join'      },
-    { href: 'contact.html',   label: 'Contact',   id: 'contact'   },
+    { href: '/',           label: 'Home',      id: 'home'      },
+    { href: '/about/',     label: 'About',     id: 'about'     },
+    { href: '/events/',    label: 'Events',    id: 'events'    },
+    { href: '/media/',     label: 'Media',     id: 'media'     },
+    { href: '/join/',      label: 'Join Us',   id: 'join'      },
+    { href: '/contact/',   label: 'Contact',   id: 'contact'   },
   ];
 
   list.innerHTML = links
@@ -74,7 +81,7 @@ function officerCardHTML(m) {
   const LI_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="vertical-align:-0.1em;margin-right:3px" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
 
   const photo = m.photo
-    ? `<img src="${sanitizeUrl(m.photo)}" alt="${sanitize(m.name)}" loading="lazy">`
+    ? `<img src="${sanitizeUrl(absoluteAssetPath(m.photo))}" alt="${sanitize(m.name)}" loading="lazy">`
     : sanitize(m.initials || '??');
 
   const linkedin = m.linkedin
@@ -82,12 +89,12 @@ function officerCardHTML(m) {
     : '';
 
   const moreInfo = (m.id && !m.open)
-    ? `<a href="officer.html?id=${sanitize(m.id)}" class="officer-more-info">More Info &rarr;</a>`
+    ? `<a href="/officer/?id=${sanitize(m.id)}" class="officer-more-info">More Info &rarr;</a>`
     : '';
 
   const links = (linkedin || moreInfo)
     ? `<div class="officer-links">${linkedin}${moreInfo}</div>`
-    : `<div class="officer-links"><span class="officer-linkedin-placeholder">Position Open &mdash; <a href="join.html" style="color:var(--cyan-glow)">Apply</a></span></div>`;
+    : `<div class="officer-links"><span class="officer-linkedin-placeholder">Position Open &mdash; <a href="/join/" style="color:var(--cyan-glow)">Apply</a></span></div>`;
 
   return `
     <div class="officer-card">
