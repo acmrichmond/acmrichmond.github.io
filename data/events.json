@@ -1,5 +1,21 @@
 [
   {
+    "id": "evt-006",
+    "title": "The License Performance Cost Trilemma: Why AI-Driven Database Operations Break Traditional Oracle Economic",
+    "speaker": "Devendra Rajput",
+    "org": "Accenture",
+    "date": "2026-07-25",
+    "time": "10:00 AM - 11:00 AM EST",
+    "format": "Virtual",
+    "link": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The%20License%20Performance%20Cost%20Trilemma%3A%20Why%20AI-Driven%20Database%20Operations%20Break%20Traditional%20Oracle%20Economic&dates=20260725T100000/20260725T110000&ctz=America%2FNew_York&details=AI-driven%20database%20management%20trilemma%20talk%20by%20Devendra%20Rajput%20from%20Accenture.",
+    "link_label": "Add to Calendar",
+    "type": "upcoming",
+    "audience": "Software Engineers & Architects",
+    "summary": "As enterprises adopt AI-driven database management, they encounter an underappreciated three-way tradeoff between licensing exposure, performance, and cost. Based on peer-reviewed research and 20 years of enterprise Oracle experience across Exadata, RAC, and OCI, this session presents the trilemma framework, empirical findings from large-scale environments, and a practical, license-aware methodology for evaluating AI database tooling. The talk is designed to be accessible to a broad technical audience while offering depth for database and cloud practitioners.",
+    "video_url": null,
+    "photos_url": null
+  },
+  {
     "id": "evt-005",
     "title": "From Invention to Impact",
     "speaker": "Abhiruchi Dakshinkar",
