@@ -54,7 +54,7 @@
         <a href="/events/" class="btn-outline-large">Explore Events</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Events Hosted</span></div>
+        <div class="stat"><span class="stat-num" id="eventsHostedStat">4+</span><span class="stat-label">Events Hosted</span></div>
         <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Attendees</span></div>
         <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To Attend</span></div>
         <div class="stat"><span class="stat-num">6</span><span class="stat-label">Officers</span></div>
@@ -260,6 +260,12 @@
       var upcoming = dated
         .filter(function(e) { return e.type !== 'past' && new Date(e.date + 'T00:00:00') >= today; })
         .sort(function(a, b) { return a.date.localeCompare(b.date); });
+
+      var hostedCount = dated
+        .filter(function(e) { return e.type === 'past' || new Date(e.date + 'T00:00:00') < today; })
+        .length;
+      var hostedEl = document.getElementById('eventsHostedStat');
+      if (hostedEl && hostedCount > 0) hostedEl.textContent = hostedCount + '+';
 
       var selected = upcoming.length ? upcoming[0] : null;
 
