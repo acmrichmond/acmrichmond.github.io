@@ -9,11 +9,30 @@
     "format": "Virtual",
     "link": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The%20License%20Performance%20Cost%20Trilemma%3A%20Why%20AI-Driven%20Database%20Operations%20Break%20Traditional%20Oracle%20Economic&dates=20260725T100000/20260725T110000&ctz=America%2FNew_York&details=AI-driven%20database%20management%20trilemma%20talk%20by%20Devendra%20Rajput%20from%20Accenture.",
     "link_label": "Add to Calendar",
-    "type": "upcoming",
     "audience": "Software Engineers & Architects",
     "summary": "As enterprises adopt AI-driven database management, they encounter an underappreciated three-way tradeoff between licensing exposure, performance, and cost. Based on peer-reviewed research and 20 years of enterprise Oracle experience across Exadata, RAC, and OCI, this session presents the trilemma framework, empirical findings from large-scale environments, and a practical, license-aware methodology for evaluating AI database tooling. The talk is designed to be accessible to a broad technical audience while offering depth for database and cloud practitioners.",
+    "type": "past",
     "video_url": null,
-    "photos_url": null
+    "photos_url": null,
+    "guest_speaker": {
+      "name": "Andrew Seely",
+      "photo": "media/andy-event-7-25-2026/andy-profile-pic.jpeg",
+      "title": "Vice President, Member & Geographic Activities — IEEE Computer Society",
+      "tagline": "CS Professor, Cybersecurity Consultant & Global IEEE Leader",
+      "linkedin": "https://www.linkedin.com/in/andrewseelytampa/",
+      "credentials": [
+        "30+ years across software engineering, systems architecture, cybersecurity policy & defense",
+        "CS Professor at Hillsborough College & Adjunct Professor at UMGC",
+        "IEEE & ACM Senior Member · USAF Veteran & VFW Life Member"
+      ],
+      "awards": [
+        "2025 Spirit of The Computer Society Award",
+        "2024 Region 3 Director's Choice Award",
+        "2024 IEEE ComSoc Exceptional Service Award",
+        "2024 Florida West Coast Section Leadership Award"
+      ],
+      "quote": "The Richmond Computer Society chapter is one of our best — engaged, motivated, actively creating value for their members. You are part of something really big."
+    }
   },
   {
     "id": "evt-005",
