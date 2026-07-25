@@ -258,19 +258,30 @@
       });
 
       var upcoming = dated
-        .filter(function(e) { return new Date(e.date + 'T00:00:00') >= today; })
+        .filter(function(e) { return e.type !== 'past' && new Date(e.date + 'T00:00:00') >= today; })
         .sort(function(a, b) { return a.date.localeCompare(b.date); });
 
-      var past = dated
-        .filter(function(e) { return new Date(e.date + 'T00:00:00') < today; })
-        .sort(function(a, b) { return b.date.localeCompare(a.date); });
-
-      var selected = upcoming.length ? upcoming[0] : (past.length ? past[0] : null);
-      var isPast = !upcoming.length && !!past.length;
+      var selected = upcoming.length ? upcoming[0] : null;
 
       var el = document.getElementById('nextEventSpotlight');
-      if (!el || !selected) {
-        if (el) el.innerHTML = '';
+      if (!el) return;
+
+      if (!selected) {
+        el.innerHTML =
+          '<div class="next-event-spotlight reveal" style="margin-bottom:4rem">' +
+            '<div class="date-badge">' +
+              '<div class="month">Next</div>' +
+              '<div class="day">&#9998;</div>' +
+              '<div class="year">Event</div>' +
+            '</div>' +
+            '<div>' +
+              '<div style="font-size:0.75rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem">New Event</div>' +
+              '<div class="spotlight-title">Coming Soon</div>' +
+              '<div class="spotlight-detail">Stay tuned &mdash; details will be announced shortly.</div>' +
+            '</div>' +
+            '<span class="btn-muted">Stay Tuned</span>' +
+          '</div>';
+        initScrollReveal();
         return;
       }
 
@@ -282,20 +293,14 @@
             '<div class="year">' + yearNum(selected.date) + '</div>' +
           '</div>' +
           '<div>' +
-            '<div style="font-size:0.75rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem">' +
-              (isPast ? 'Most Recent Event' : 'Next Event') +
-            '</div>' +
+            '<div style="font-size:0.75rem;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem">Next Event</div>' +
             '<div class="spotlight-title">' + sanitize(selected.title || '') + '</div>' +
             '<div class="spotlight-meta">' + sanitize(selected.speaker || '') + (selected.org ? ' &middot; ' + sanitize(selected.org) : '') + '</div>' +
             '<div class="spotlight-detail">' + sanitize(selected.time || '') + (selected.format ? ' &middot; ' + sanitize(selected.format) : '') + '</div>' +
           '</div>' +
-          (
-            !isPast
-              ? (selected.link
-                  ? '<a href="' + sanitizeUrl(selected.link) + '" target="_blank" rel="noopener noreferrer" class="btn">' + sanitize(selected.link_label || 'Register') + ' &rarr;</a>'
-                  : '<span class="btn-muted">Registration Coming Soon</span>')
-              : '<span class="btn-muted">Recording Coming Soon</span>'
-          ) +
+          (selected.link
+            ? '<a href="' + sanitizeUrl(selected.link) + '" target="_blank" rel="noopener noreferrer" class="btn">' + sanitize(selected.link_label || 'Register') + ' &rarr;</a>'
+            : '<span class="btn-muted">Registration Coming Soon</span>') +
         '</div>';
 
       initScrollReveal();

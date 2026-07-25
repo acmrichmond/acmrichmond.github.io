@@ -706,6 +706,100 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .cal-detail-empty { color: var(--text-muted); font-size: 0.875rem; }
 
 /* ===========================
+   GUEST SPOTLIGHT (Events page)
+   =========================== */
+#guestSpotlight .section-heading { margin-bottom: 1.1rem; }
+
+.guest-spotlight-card {
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.75rem;
+}
+
+/* header: photo + identity */
+.guest-header {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(60,110,113,0.18);
+}
+.guest-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 16px;
+  border: 3px solid var(--cyan-glow);
+  box-shadow: 0 8px 20px rgba(60,110,113,0.3);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.guest-header-text { min-width: 0; }
+.guest-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--amber);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  margin-bottom: 0.5rem;
+}
+.guest-name { font-size: 1.5rem; font-weight: 800; color: var(--white); line-height: 1.15; }
+.guest-tagline { font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin: 0.3rem 0 0.5rem; }
+.guest-title { font-size: 0.92rem; color: var(--cyan-glow); font-weight: 700; }
+
+/* body: flowing text, no nested boxes */
+.guest-body { margin-bottom: 1.5rem; }
+.guest-line {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+}
+.guest-line-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--amber);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+}
+.guest-awards-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.guest-awards-list li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+.guest-quote {
+  margin: 1.25rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--cyan-glow);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* footer actions */
+.guest-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(60,110,113,0.18);
+}
+.guest-event-link { font-size: 0.85rem; color: var(--cyan-glow); font-weight: 600; text-decoration: none; }
+.guest-event-link:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .guest-spotlight-card { padding: 1.5rem; }
+  .guest-header { flex-direction: column; align-items: center; text-align: center; }
+  .guest-footer { justify-content: center; text-align: center; }
+}
+
+/* ===========================
    EVENTS PAGE LAYOUT
    =========================== */
 .events-layout {

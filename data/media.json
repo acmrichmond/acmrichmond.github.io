@@ -1,5 +1,21 @@
 [
   {
+    "id": "andy-event-7-25-2026",
+    "type": "photos",
+    "title": "The License Performance Cost Trilemma: Why AI-Driven Database Operations Break Traditional Oracle Economic",
+    "description": "Photos from our July 25 session with speaker Devendra Rajput (Accenture). We were honored to host Andrew Seely, Vice President of Member & Geographic Activities for the IEEE Computer Society, as our distinguished chief guest. The session wasn't recorded, but here are photos from the event.",
+    "date": "2026-07-25",
+    "thumbnail_url": "media/andy-event-7-25-2026/Andy_event_7_25_5.jpeg",
+    "photos": [
+      "media/andy-event-7-25-2026/Andy_event_7_25_5.jpeg",
+      "media/andy-event-7-25-2026/Andy_event_7_25_4.jpeg",
+      "media/andy-event-7-25-2026/Andy_event_7_25_3.jpeg",
+      "media/andy-event-7-25-2026/Andy_event_7_25_2.jpeg",
+      "media/andy-event-7-25-2026/Andy_event_7_25_1.jpeg"
+    ],
+    "event_id": "evt-006"
+  },
+  {
     "type": "video",
     "title": "Trustworthy AI in Production",
     "speaker": "Ravi Teja Reddy Mandala",
