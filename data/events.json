@@ -1,5 +1,22 @@
 [
   {
+    "id": "evt-007",
+    "title": "Securing the Agentic Era: Rethinking API Trust for AI Agents",
+    "speaker": "Anil Kolhe",
+    "org": null,
+    "role": "Senior Technology Leader",
+    "date": "2026-08-08",
+    "time": "10:00 AM EST",
+    "format": "Virtual",
+    "link": null,
+    "type": "upcoming",
+    "link_label": "Add to Calendar",
+    "audience": "Software Engineers & Architects",
+    "summary": "APIs were designed for human-driven applications, but in 2026 their fastest-growing consumers are no longer human. As AI agents begin to outnumber human identities 45:1 in the enterprise, the trust assumptions that have guided API security for decades are starting to fail. This session examines how agent-to-agent communication expands the API attack surface, and presents a practical architecture for the agentic era: identity-first, ephemeral by default, and observable at every hop. You'll leave with a playbook you can start applying to your own platform on day one.",
+    "video_url": null,
+    "photos_url": null
+  },
+  {
     "id": "evt-006",
     "title": "The License Performance Cost Trilemma: Why AI-Driven Database Operations Break Traditional Oracle Economic",
     "speaker": "Devendra Rajput",
