@@ -399,6 +399,7 @@
         } catch (err) {
           calLink = '#';
         }
+        if (ev.link) calLink = sanitizeUrl(ev.link);
 
         var modalCal = document.getElementById('modalCal');
         modalCal.href = calLink;
