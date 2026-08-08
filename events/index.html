@@ -170,54 +170,60 @@
       var past = events.filter(function(e) { return e.type === 'past'; })
         .sort(function(a, b) { return b.date.localeCompare(a.date); });
 
-      // Distinguished guest spotlight: most recent event carrying a guest_speaker record
+      // Distinguished guest spotlight: every event carrying a guest_speaker record, newest first
       var guestEvents = events
         .filter(function(e) { return e.guest_speaker && e.guest_speaker.name; })
         .sort(function(a, b) { return b.date.localeCompare(a.date); });
       var spotEl = document.getElementById('guestSpotlight');
       if (spotEl && guestEvents.length) {
-        var gEv = guestEvents[0];
-        var gs = gEv.guest_speaker;
-        var photoUrl = gs.photo
-          ? sanitizeUrl(absoluteAssetPath(gs.photo))
-          : sanitizeUrl('https://ui-avatars.com/api/?name=' + encodeURIComponent(gs.name) + '&background=353535&color=3c6e71&size=200&bold=true&format=png');
+        var cardsHtml = guestEvents.map(function(gEv) {
+          var gs = gEv.guest_speaker;
+          var photoUrl = gs.photo
+            ? sanitizeUrl(absoluteAssetPath(gs.photo))
+            : sanitizeUrl('https://ui-avatars.com/api/?name=' + encodeURIComponent(gs.name) + '&background=353535&color=3c6e71&size=200&bold=true&format=png');
 
-        var credentialsHtml = (gs.credentials && gs.credentials.length)
-          ? '<p class="guest-line"><span class="guest-line-label">Background</span>' + gs.credentials.map(function(c) { return sanitize(c); }).join(' &middot; ') + '</p>'
-          : '';
+          var credentialsHtml = (gs.credentials && gs.credentials.length)
+            ? '<p class="guest-line"><span class="guest-line-label">Background</span>' + gs.credentials.map(function(c) { return sanitize(c); }).join(' &middot; ') + '</p>'
+            : '';
 
-        var awardsHtml = (gs.awards && gs.awards.length)
-          ? '<div class="guest-line"><span class="guest-line-label">Honors</span>' +
-              '<ul class="guest-awards-list">' + gs.awards.map(function(a) { return '<li>&#127942; ' + sanitize(a) + '</li>'; }).join('') + '</ul>' +
-            '</div>'
-          : '';
+          var awardsHtml = (gs.awards && gs.awards.length)
+            ? '<div class="guest-line"><span class="guest-line-label">Honors</span>' +
+                '<ul class="guest-awards-list">' + gs.awards.map(function(a) { return '<li>&#127942; ' + sanitize(a) + '</li>'; }).join('') + '</ul>' +
+              '</div>'
+            : '';
 
-        var linkedinHtml = gs.linkedin
-          ? '<a href="' + sanitizeUrl(gs.linkedin) + '" target="_blank" rel="noopener noreferrer" class="btn-sm">View LinkedIn Profile</a>'
-          : '';
+          var linkedinHtml = gs.linkedin
+            ? '<a href="' + sanitizeUrl(gs.linkedin) + '" target="_blank" rel="noopener noreferrer" class="btn-sm">View LinkedIn Profile</a>'
+            : '';
 
-        spotEl.innerHTML =
-          '<h3 class="section-heading">Guest Spotlight</h3>' +
-          '<div class="guest-spotlight-card reveal">' +
-            '<div class="guest-header">' +
-              '<img class="guest-avatar" src="' + photoUrl + '" alt="' + sanitize(gs.name) + '" loading="lazy">' +
-              '<div class="guest-header-text">' +
-                '<div class="guest-label">Chief Guest</div>' +
-                '<div class="guest-name">' + sanitize(gs.name) + '</div>' +
-                (gs.tagline ? '<div class="guest-tagline">' + sanitize(gs.tagline) + '</div>' : '') +
-                (gs.title ? '<div class="guest-title">' + sanitize(gs.title) + '</div>' : '') +
+          var dateHtml = gEv.date ? '<div class="guest-date">' + sanitize(formatDateLong(gEv.date)) + '</div>' : '';
+
+          return (
+            '<div class="guest-spotlight-card reveal">' +
+              '<div class="guest-header">' +
+                '<img class="guest-avatar" src="' + photoUrl + '" alt="' + sanitize(gs.name) + '" loading="lazy">' +
+                '<div class="guest-header-text">' +
+                  '<div class="guest-label">Chief Guest</div>' +
+                  '<div class="guest-name">' + sanitize(gs.name) + '</div>' +
+                  (gs.tagline ? '<div class="guest-tagline">' + sanitize(gs.tagline) + '</div>' : '') +
+                  (gs.title ? '<div class="guest-title">' + sanitize(gs.title) + '</div>' : '') +
+                  dateHtml +
+                '</div>' +
               '</div>' +
-            '</div>' +
-            '<div class="guest-body">' +
-              credentialsHtml +
-              awardsHtml +
-              (gs.quote ? '<blockquote class="guest-quote">' + sanitize(gs.quote) + '</blockquote>' : '') +
-            '</div>' +
-            '<div class="guest-footer">' +
-              linkedinHtml +
-              '<a href="#ev-' + sanitize(String(gEv.id)) + '" class="guest-event-link">Joined us for: ' + sanitize(gEv.title) + ' &rarr;</a>' +
-            '</div>' +
-          '</div>';
+              '<div class="guest-body">' +
+                credentialsHtml +
+                awardsHtml +
+                (gs.quote ? '<blockquote class="guest-quote">' + sanitize(gs.quote) + '</blockquote>' : '') +
+              '</div>' +
+              '<div class="guest-footer">' +
+                linkedinHtml +
+                '<a href="#ev-' + sanitize(String(gEv.id)) + '" class="guest-event-link">Joined us for: ' + sanitize(gEv.title) + ' &rarr;</a>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join('');
+
+        spotEl.innerHTML = '<h3 class="section-heading">Guest Spotlight</h3>' + cardsHtml;
         initScrollReveal();
       }
 

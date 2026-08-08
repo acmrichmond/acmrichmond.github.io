@@ -1,20 +1,49 @@
 [
   {
-    "id": "evt-007",
+    "id": "evt-008",
     "title": "Securing the Agentic Era: Rethinking API Trust for AI Agents",
     "speaker": "Anil Kolhe",
     "org": null,
     "role": "Senior Technology Leader",
-    "date": "2026-08-08",
+    "date": "2026-08-22",
     "time": "10:00 AM EST",
     "format": "Virtual",
-    "link": "https://calendar.app.google/4636Js6EU5fCxKGbA",
+    "link": null,
     "type": "upcoming",
-    "link_label": "Add to Calendar",
     "audience": "Software Engineers & Architects",
     "summary": "APIs were designed for human-driven applications, but in 2026 their fastest-growing consumers are no longer human. As AI agents begin to outnumber human identities 45:1 in the enterprise, the trust assumptions that have guided API security for decades are starting to fail. This session examines how agent-to-agent communication expands the API attack surface, and presents a practical architecture for the agentic era: identity-first, ephemeral by default, and observable at every hop. You'll leave with a playbook you can start applying to your own platform on day one.",
     "video_url": null,
     "photos_url": null
+  },
+  {
+    "id": "evt-007",
+    "title": "The Invisible Weight of the Web",
+    "speaker": "Shailesh Kadam",
+    "org": "Saks Global",
+    "role": "Lead Architect",
+    "date": "2026-08-08",
+    "time": "10:00 AM EST",
+    "format": "Virtual",
+    "link": null,
+    "type": "past",
+    "audience": "Software Engineers & Architects",
+    "summary": "The average webpage has grown 300% in a decade, and that weight now shows up on the bottom line — 53% of users abandon a page after a 3-second load, and every extra second of delay costs 7% in conversions. This session broke down where the bloat comes from (oversized images, bloated JS bundles, missing server-side compression) and walked through the next generation of compression tooling — Brotli and Zstandard for text and data, AVIF and WebP for images — along with a practical 4-week roadmap teams can use to audit, convert, and validate their way to a 40-60% reduction in page weight.",
+    "video_url": "https://www.youtube.com/watch?v=HT8sl9CIa9E",
+    "photos_url": null,
+    "guest_speaker": {
+      "name": "Allen Jones",
+      "photo": "media/allen-jones-event-8-8-2026/allen-jones-headshot.jpg",
+      "title": "Past Chair, IEEE Richmond Section — Founding Chair, IEEE Richmond Computer Society Chapter",
+      "tagline": "IEEE Senior Member & 20+ Year Volunteer Leader",
+      "linkedin": null,
+      "credentials": [
+        "40+ years in electronic hardware design, software design & technical management",
+        "Trains and mentors all new IEEE Richmond Section, Chapter & Student Branch officers",
+        "US Delegate to multiple ISO and IEC standards committees",
+        "Named among Schneider Electric's top global technical experts"
+      ],
+      "awards": []
+    }
   },
   {
     "id": "evt-006",
