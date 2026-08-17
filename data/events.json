@@ -3,17 +3,25 @@
     "id": "evt-008",
     "title": "Securing the Agentic Era: Rethinking API Trust for AI Agents",
     "speaker": "Anil Kolhe",
-    "org": null,
-    "role": "Senior Technology Leader",
+    "org": "Yodlee",
+    "role": "Principal Engineer & Architect",
     "date": "2026-08-22",
     "time": "10:00 AM EST",
     "format": "Virtual",
-    "link": null,
+    "link": "https://lnkd.in/eDER6Tcb",
+    "link_label": "Add to Calendar",
     "type": "upcoming",
     "audience": "Software Engineers & Architects",
-    "summary": "APIs were designed for human-driven applications, but in 2026 their fastest-growing consumers are no longer human. As AI agents begin to outnumber human identities 45:1 in the enterprise, the trust assumptions that have guided API security for decades are starting to fail. This session examines how agent-to-agent communication expands the API attack surface, and presents a practical architecture for the agentic era: identity-first, ephemeral by default, and observable at every hop. You'll leave with a playbook you can start applying to your own platform on day one.",
+    "summary": "What happens when AI becomes autonomous, and more importantly, how do we make sure we can trust it? This session brings together STEM leadership, AI, API security, and enterprise engineering. Chief guest Kemal Akkaya, Professor & Chair of the Department of Computer Science at Virginia Commonwealth University and an IEEE Fellow, shares insights on STEM and computer science leadership. Anil Kolhe, Principal Engineer & Architect at Yodlee, follows with a technical talk on API Security by Design, architecting trust for autonomous AI agents and examining the security challenges emerging as AI systems become increasingly autonomous. This is more than a technical talk, it's a conversation about building the foundations of trust for the next generation of intelligent systems. Join ACM Richmond Chapter and IEEE Computer Society for this virtual event, open to the community.",
     "video_url": null,
-    "photos_url": null
+    "photos_url": null,
+    "guest_speaker": {
+      "name": "Kemal Akkaya",
+      "photo": "media/kemal-pic.jpeg",
+      "title": "Professor & Chair, Department of Computer Science, Virginia Commonwealth University (VCU)",
+      "tagline": "IEEE Fellow",
+      "linkedin": "https://www.linkedin.com/in/kemal-akkaya-6b36a82/"
+    }
   },
   {
     "id": "evt-007",
