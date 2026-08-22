@@ -1,6 +1,15 @@
 [
   {
     "type": "video",
+    "title": "Securing the Agentic Era: Rethinking API Trust for AI Agents",
+    "speaker": "Anil Kolhe",
+    "date": "2026-08-22",
+    "thumbnail_url": "media/kemal-event-thumbnail.jpeg",
+    "link_url": null,
+    "event_id": "evt-008"
+  },
+  {
+    "type": "video",
     "title": "The Invisible Weight of the Web",
     "speaker": "Shailesh Kadam",
     "date": "2026-08-08",
