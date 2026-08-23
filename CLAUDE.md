@@ -9,6 +9,7 @@ This is the source for [acmrichmond.org](https://acmrichmond.org), a static GitH
 - **Pure static site** — HTML, CSS, vanilla JS. No build step, no framework, no npm.
 - **Hosting** — GitHub Pages. Every push to `main` deploys immediately.
 - **Domain** — Cloudflare DNS pointing to GitHub Pages.
+- **Repository** — `github.com/acmrichmond/acmrichmond.github.io` (remote `origin`). Default/production branch is `main`.
 - **All displayed content comes from `data/*.json` files** fetched at runtime via `fetch()`. Pages read JSON and render it into the DOM. This is the core architectural rule — see Security below.
 
 ---
@@ -101,7 +102,7 @@ All content changes go through PRs against `main`. Here is how to add each conte
 
 - `id` — unique, increment from the highest existing (evt-001, evt-002, …)
 - `type` — `"upcoming"` shows in the upcoming section; `"past"` moves it to past events. Both the home page and Events page also auto-derive past/upcoming from `date` vs today, **but an explicit `"past"` always wins** — set it explicitly for an event that happened earlier today (date comparisons alone won't flip a same-day event to past until the next day).
-- `link` — RSVP/registration URL; use `null` if none
+- `link` — RSVP/registration URL; use `null` if none. When `link` is `null`, the home page spotlight (`#nextEventSpotlight`) shows a muted button reading "Registration Coming Soon" instead of a live link. Set `link_label` (e.g. `"Will Be Available Soon"`) to override that placeholder text. Once the real `link` is set, `link_label` instead relabels the live button (defaults to `"Register"` if omitted).
 - `video_url` — YouTube URL added after the event; `null` until then
 - `photos_url` — external photo album URL if applicable; use `null` if photos are hosted locally (see Photo Galleries below)
 - `guest_speaker` — optional; adds a "Guest Spotlight" card to the top of the Events page (see below). Omit entirely if there's no distinguished guest to feature.
@@ -227,6 +228,18 @@ This data file still exists but **no page currently reads it** — there is no `
 
 ---
 
+## Event Completion Checklist
+
+When an event has just happened, work through this list (formalized after wrapping up the Kemal Akkaya / Anil Kolhe event, 2026-08-22):
+
+1. **Flip the event to past** — in `data/events.json`, set `"type": "past"` explicitly on that event's record, even if the event date is today. The date-vs-today comparison on the home page and Events page won't treat a same-day event as past until the next calendar day, so the explicit flag is what actually moves it out of "upcoming".
+2. **Recorded session placeholder** — if a thumbnail/poster image is available before the YouTube link is, add an entry to `data/media.json` right away: `type: "video"`, matching `title`/`speaker`/`date`, `thumbnail_url` pointing at the local image in `media/`, `link_url: null`, `event_id` set to the event's id. With `link_url` (and no matching `video_url` on the event) left `null`, the media page automatically renders a "Coming Soon" tag on that card — no extra work needed. When the YouTube link arrives later, set either `link_url` here or `video_url` on the `events.json` record (either is picked up at runtime; `link_url` is preferred since it's explicit).
+3. **Guest spotlight enrichment** — if the event had a `guest_speaker`, this is a natural point to fill in full `credentials` and `awards` if they weren't already added when the event was first created.
+4. **Home page hero stats** (`.hero-stats` in `index.html`): `#eventsHostedStat` ("Events Hosted") is auto-computed from `events.json` — nothing to do. `Attendees` is hardcoded text — ask the user whether/how to bump it (e.g. an estimate from historical per-event attendance, or an exact number they give you); don't guess a number without confirming.
+5. **LinkedIn community banner** — the "Community Update" strip on the home page (`.linkedin-update-text`, e.g. "Join 200+ local professionals on LinkedIn for event updates") is hardcoded text, not JSON-driven, and easy to forget since it's unrelated to the events data. Ask the user if the follower count needs bumping whenever they mention subscriber/follower milestones.
+
+---
+
 ## Theming & CSS
 
 ### Color Palette (Charcoal & Teal)
@@ -304,7 +317,7 @@ The four stat tiles in the hero (`.hero-stats` in `index.html`) are a mix of dyn
 - **Adding an officer** — provide name, role, bio, LinkedIn; Claude edits `data/team.json`
 - **Adding a video** — provide YouTube URL and event match; Claude edits `data/media.json`
 - **Adding a photo gallery** — put photos in `media/<folder>/`; tell Claude the folder name, event title, and cover photo filename; Claude edits `data/media.json`
-- **Changing an event from upcoming to past** — tell Claude the event ID; Claude flips `"type"` to `"past"`
+- **Marking an event complete** — tell Claude the event ID; Claude works through the [Event Completion Checklist](#event-completion-checklist) (flips `"type"` to `"past"`, adds a media.json placeholder if a thumbnail is ready, enriches the guest spotlight, and flags the hardcoded stats/banner that may need a bump)
 - **Adding a YouTube recording to a past event** — provide the YouTube URL and event ID; Claude updates both `events.json` and `media.json`
 - **Featuring a distinguished guest** — provide their name, title, bio/credentials, any awards, a quote, and (ideally) a real headshot; Claude adds a `guest_speaker` object to the relevant event in `events.json`, which auto-populates the Guest Spotlight card on the Events page
 - **CSS/layout changes** — all in `css/style.css`; describe the visual change you want

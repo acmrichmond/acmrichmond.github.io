@@ -10,17 +10,34 @@
     "format": "Virtual",
     "link": "https://lnkd.in/eDER6Tcb",
     "link_label": "Add to Calendar",
-    "type": "upcoming",
+    "type": "past",
     "audience": "Software Engineers & Architects",
     "summary": "What happens when AI becomes autonomous, and more importantly, how do we make sure we can trust it? This session brings together STEM leadership, AI, API security, and enterprise engineering. Chief guest Kemal Akkaya, Professor & Chair of the Department of Computer Science at Virginia Commonwealth University and an IEEE Fellow, shares insights on STEM and computer science leadership. Anil Kolhe, Principal Engineer & Architect at Yodlee, follows with a technical talk on API Security by Design, architecting trust for autonomous AI agents and examining the security challenges emerging as AI systems become increasingly autonomous. This is more than a technical talk, it's a conversation about building the foundations of trust for the next generation of intelligent systems. Join ACM Richmond Chapter and IEEE Computer Society for this virtual event, open to the community.",
-    "video_url": null,
+    "video_url": "https://www.youtube.com/watch?v=YgxjJtr3S3k",
     "photos_url": null,
     "guest_speaker": {
       "name": "Kemal Akkaya",
       "photo": "media/kemal-pic.jpeg",
       "title": "Professor & Chair, Department of Computer Science, Virginia Commonwealth University (VCU)",
       "tagline": "IEEE Fellow",
-      "linkedin": "https://www.linkedin.com/in/kemal-akkaya-6b36a82/"
+      "linkedin": "https://www.linkedin.com/in/kemal-akkaya-6b36a82/",
+      "credentials": [
+        "Chair, Dept. of Computer Science, VCU (since 2025) — previously Eminent Scholar Chaired Professor, Knight Foundation School of Computing & Information Sciences, Florida International University",
+        "Ph.D. in Computer Science, University of Maryland, Baltimore County (2005)",
+        "Founder & Director, Advanced Wireless and Security Lab (ADWISE) — cybersecurity & privacy, trustworthy AI, IoT, cyber-physical systems, and blockchain",
+        "300+ peer-reviewed publications, ~22,000 citations, h-index of 61, 10 patents, $20M+ in research funding",
+        "IEEE Fellow (2023) & ACM Senior Member — named among the top 2% of scientists worldwide in a Stanford University study",
+        "Editor-in-Chief, Springer Nature Computer Science — Associate Editor, IEEE Transactions on Information Forensics and Security — Area Editor, Elsevier Ad Hoc Networks & Computer Networks",
+        "General Chair, IEEE LCN 2018 — General Co-Chair, IEEE NOMS 2023",
+        "Featured in NPR, The Wall Street Journal, Forbes, and the Miami Herald"
+      ],
+      "awards": [
+        "2023 IEEE Fellow — for contributions to routing and topology management in wireless ad hoc and sensor networks",
+        "2023 FIU Top Scholar Award",
+        "2020 FIU Faculty Senate Excellence in Research Award",
+        "2020 FIU College of Engineering and Computing Research Award",
+        "2010 Elsevier \"Top Cited\" Article Award"
+      ]
     }
   },
   {

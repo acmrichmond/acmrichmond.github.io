@@ -55,7 +55,7 @@
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-num" id="eventsHostedStat">4+</span><span class="stat-label">Events Hosted</span></div>
-        <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Attendees</span></div>
+        <div class="stat"><span class="stat-num">160+</span><span class="stat-label">Attendees</span></div>
         <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To Attend</span></div>
         <div class="stat"><span class="stat-num">6</span><span class="stat-label">Officers</span></div>
       </div>
@@ -71,7 +71,7 @@
       aria-label="Visit ACM Richmond LinkedIn page"
     >
       <span class="linkedin-update-kicker">Community Update</span>
-      <span class="linkedin-update-text">Join 100+ local professionals on LinkedIn for event updates</span>
+      <span class="linkedin-update-text">Join 200+ local professionals on LinkedIn for event updates</span>
       <span class="linkedin-update-cta" aria-label="Follow ACM Richmond on LinkedIn">
         <img src="/media/icons/linkedin.svg" alt="" class="linkedin-update-icon" aria-hidden="true">
         <span class="linkedin-update-orb" aria-hidden="true"></span>
@@ -306,7 +306,7 @@
           '</div>' +
           (selected.link
             ? '<a href="' + sanitizeUrl(selected.link) + '" target="_blank" rel="noopener noreferrer" class="btn">' + sanitize(selected.link_label || 'Register') + ' &rarr;</a>'
-            : '<span class="btn-muted">Registration Coming Soon</span>') +
+            : '<span class="btn-muted">' + sanitize(selected.link_label || 'Registration Coming Soon') + '</span>') +
         '</div>';
 
       initScrollReveal();
