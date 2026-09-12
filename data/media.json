@@ -1,6 +1,15 @@
 [
   {
     "type": "video",
+    "title": "Agent Governance: A Critical Missing Layer in Agent Safety",
+    "speaker": "Abhishek Kumar Singh",
+    "date": "2026-09-12",
+    "thumbnail_url": "media/sept-12-event.jpeg",
+    "link_url": "https://www.youtube.com/watch?v=bOJbVRk0LLI",
+    "event_id": "evt-009"
+  },
+  {
+    "type": "video",
     "title": "Securing the Agentic Era: Rethinking API Trust for AI Agents",
     "speaker": "Anil Kolhe",
     "date": "2026-08-22",

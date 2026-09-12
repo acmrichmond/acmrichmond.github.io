@@ -1,5 +1,48 @@
 [
   {
+    "id": "evt-009",
+    "title": "Agent Governance: A Critical Missing Layer in Agent Safety",
+    "speaker": "Abhishek Kumar Singh",
+    "date": "2026-09-12",
+    "time": "10:00 AM EST",
+    "format": "Virtual",
+    "link": null,
+    "type": "past",
+    "audience": "General Technical Audience",
+    "summary": "ACM Richmond was honored to welcome John Douglas McDonald — Founder & CEO of JDM Associates, IEEE Life Fellow, and elected member of the National Academy of Engineering — as our Chief Guest for this session. Abhishek Kumar Singh followed with a talk on Agent Governance: A Critical Missing Layer in Agent Safety, examining why AI governance frameworks built around human-in-the-loop assumptions break down for autonomous AI agents that now book travel, manage financial portfolios, negotiate prices, and delegate subtasks to other agents with minimal or no human oversight. He presented the Consumer Agent Governance Framework (CAGF), a three-layer architecture of infrastructure controls, interaction protocols, and measurable safety metrics, validated across 4,500 agent interaction scenarios where even minimal interventions yielded statistically significant improvements in consumer safety outcomes. The session assumed a general technical audience and required no prior expertise in AI governance or machine learning.",
+    "video_url": "https://www.youtube.com/watch?v=bOJbVRk0LLI",
+    "photos_url": null,
+    "guest_speaker": {
+      "name": "John Douglas McDonald",
+      "photo": "media/John-McDonald-pic.jpeg",
+      "title": "Founder & CEO, JDM Associates",
+      "tagline": "IEEE Life Fellow & Elected Member, National Academy of Engineering",
+      "linkedin": null,
+      "credentials": [
+        "52+ years of leadership in electric utility transmission and distribution",
+        "Works directly with utilities and manufacturers on smart grid integration, SCADA, and power system automation",
+        "Elected member, National Academy of Engineering",
+        "IEEE Life Fellow with 55 years of service",
+        "Past President, IEEE Power & Energy Society (PES); Past Chair, IEEE PES Substations Committee; IEEE Division VII Past Director",
+        "VP for Technical Activities, CIGRE USNC; Board Chair, SGIP; 30-year member, DTECH Conference Advisory Committee",
+        "Formerly Smart Grid Business Development Leader, GE Grid Solutions",
+        "Teaches Smart Grid courses at Georgia Institute of Technology, University of Tennessee at Chattanooga, and IEEE PES local chapters",
+        "B.S.E.E. and M.S.E.E. (Power Engineering), Purdue University — M.B.A. (Finance), UC Berkeley",
+        "Authored five textbooks, including Editor-in-Chief for Electric Power Substations Engineering; published 150+ technical papers; holds a U.S. patent in smart grid technology"
+      ],
+      "awards": [
+        "2024 CIGRE USNC Philip Sporn Award",
+        "2021 CIGRE Honorary Member Award",
+        "2016 CIGRE Distinguished Member Award",
+        "2016 CIGRE USNC Attwood Associate Award",
+        "2002 IEEE PES Excellence in Power Distribution Engineering Award",
+        "2000 IEEE Millennium Medal",
+        "IEEE PES Substations Committee Distinguished Service Award",
+        "IEEE PES Meritorious Service Award"
+      ]
+    }
+  },
+  {
     "id": "evt-008",
     "title": "Securing the Agentic Era: Rethinking API Trust for AI Agents",
     "speaker": "Anil Kolhe",
