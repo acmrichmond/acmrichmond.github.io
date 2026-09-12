@@ -10,7 +10,7 @@
     "type": "past",
     "audience": "General Technical Audience",
     "summary": "ACM Richmond was honored to welcome John Douglas McDonald — Founder & CEO of JDM Associates, IEEE Life Fellow, and elected member of the National Academy of Engineering — as our Chief Guest for this session. Abhishek Kumar Singh followed with a talk on Agent Governance: A Critical Missing Layer in Agent Safety, examining why AI governance frameworks built around human-in-the-loop assumptions break down for autonomous AI agents that now book travel, manage financial portfolios, negotiate prices, and delegate subtasks to other agents with minimal or no human oversight. He presented the Consumer Agent Governance Framework (CAGF), a three-layer architecture of infrastructure controls, interaction protocols, and measurable safety metrics, validated across 4,500 agent interaction scenarios where even minimal interventions yielded statistically significant improvements in consumer safety outcomes. The session assumed a general technical audience and required no prior expertise in AI governance or machine learning.",
-    "video_url": null,
+    "video_url": "https://www.youtube.com/watch?v=bOJbVRk0LLI",
     "photos_url": null,
     "guest_speaker": {
       "name": "John Douglas McDonald",
