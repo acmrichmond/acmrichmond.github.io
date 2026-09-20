@@ -50,13 +50,13 @@
     "open": false
   },
   {
-    "id": "webmaster-open",
-    "name": "Open Position",
+    "id": "sairamakrishna-karri",
+    "name": "Sairamakrishna Karri",
     "role": "Web Master",
-    "initials": "WM",
-    "bio": "The Web Master shapes ACM Richmond's digital identity, overseeing the chapter website's design, content accuracy, and technical performance. This role implements new features, maintains infrastructure, and collaborates with officers to ensure our online presence accurately reflects chapter programs, events, and leadership — keeping Richmond's tech community connected and informed.",
-    "linkedin": null,
-    "photo": "media/open-question.svg",
-    "open": true
+    "initials": "SK",
+    "bio": "As Web Master, Sairamakrishna shapes ACM Richmond's digital identity, overseeing the chapter website's design, content accuracy, and technical performance. He implements new features, maintains infrastructure, and collaborates with officers to ensure our online presence accurately reflects chapter programs, events, and leadership — keeping Richmond's tech community connected and informed.",
+    "linkedin": "https://www.linkedin.com/in/sairamakrishna-karri-042142121/",
+    "photo": "media/sai-profile-pic.jpeg",
+    "open": false
   }
 ]
