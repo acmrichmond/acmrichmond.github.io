@@ -59,6 +59,7 @@ function renderNav(activePage) {
     { href: '/about/',     label: 'About',     id: 'about'     },
     { href: '/events/',    label: 'Events',    id: 'events'    },
     { href: '/media/',     label: 'Media',     id: 'media'     },
+    { href: '/rvahack26/', label: 'RVAHack26', id: 'rvahack26' },
     { href: '/join/',      label: 'Join Us',   id: 'join'      },
     { href: '/contact/',   label: 'Contact',   id: 'contact'   },
   ];

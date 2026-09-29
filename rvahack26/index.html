@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://ui-avatars.com https://img.youtube.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none';">
+  <title>RVAHack26 &mdash; International Virtual Hackathon | ACM Richmond</title>
+  <meta name="description" content="RVAHack26: a free, international virtual hackathon Oct 23&ndash;25, 2026, hosted by ACM Richmond with IEEE Computer Society and IEEE Richmond Section. Register as a student, judge, or mentor.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ACM Richmond Professional Chapter">
+  <meta property="og:title" content="RVAHack26 &mdash; International Virtual Hackathon">
+  <meta property="og:description" content="A free, international virtual hackathon Oct 23&ndash;25, 2026, hosted by ACM Richmond with IEEE Computer Society and IEEE Richmond Section.">
+  <meta property="og:url" content="https://acmrichmond.org/rvahack26">
+  <meta property="og:image" content="https://acmrichmond.org/acm-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RVAHack26 &mdash; International Virtual Hackathon">
+  <meta name="twitter:description" content="A free, international virtual hackathon Oct 23&ndash;25, 2026, hosted by ACM Richmond with IEEE Computer Society and IEEE Richmond Section.">
+  <meta name="twitter:image" content="https://acmrichmond.org/acm-logo.png">
+  <link rel="icon" type="image/png" href="/acm-logo.png">
+  <link rel="apple-touch-icon" href="/acm-logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    const _t = localStorage.getItem('theme');
+    if (_t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="/" class="brand">
+      <img src="/acm-logo.png" alt="ACM Richmond Logo">
+      <div class="brand-text">
+        <h1>ACM Richmond</h1>
+        <p>Professional Chapter</p>
+      </div>
+    </a>
+    <div class="nav-right" id="navRight">
+      <nav><ul id="navList"></ul></nav>
+      <button class="theme-toggle-btn" id="themeToggle">&#127769; Dark</button>
+    </div>
+    <button class="hamburger" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hackathon-hero">
+    <div class="hackathon-hero-content">
+      <span class="hackathon-badge">&#127760; Virtual &amp; International &middot; October 23&ndash;25, 2026</span>
+      <h2 class="hackathon-title">RVA<span>Hack</span>26</h2>
+      <p class="hackathon-tagline">ACM Richmond's international virtual hackathon &mdash; presented with IEEE Computer Society and IEEE Richmond Section. Build, ship, and compete with students, mentors, and judges from anywhere in the world.</p>
+
+      <div class="hackathon-hero-actions">
+        <a href="#register" class="btn-primary-large">Register Now &darr;</a>
+        <a href="#schedule" class="btn-outline-large">View Schedule</a>
+      </div>
+
+      <div class="countdown-row" id="countdownRow" aria-label="Countdown to RVAHack26 kickoff">
+        <div class="countdown-box"><span class="countdown-num" id="cdDays">&ndash;</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-box"><span class="countdown-num" id="cdHours">&ndash;</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-box"><span class="countdown-num" id="cdMins">&ndash;</span><span class="countdown-label">Mins</span></div>
+        <div class="countdown-box"><span class="countdown-num" id="cdSecs">&ndash;</span><span class="countdown-label">Secs</span></div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Days</span></div>
+        <div class="stat"><span class="stat-num">Virtual</span><span class="stat-label">Format</span></div>
+        <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To Join</span></div>
+        <div class="stat"><span class="stat-num">Global</span><span class="stat-label">Participants</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ABOUT -->
+    <section style="margin-bottom:4rem" class="reveal">
+      <h2 class="section-title">What Is <span>RVAHack26</span>?</h2>
+      <div style="max-width:740px;margin:0 auto;text-align:center">
+        <p style="font-size:1.05rem;line-height:1.85;color:var(--text-muted)">
+          RVAHack26 is a free, three-day international hackathon hosted by ACM Richmond in partnership with IEEE Computer Society and IEEE Richmond Section. Because it's fully virtual, students and professionals anywhere in the world can form teams, build a project from scratch, and present it to a panel of judges &mdash; no travel required.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" style="margin-bottom:4.5rem">
+      <h2 class="section-title">Event <span>Schedule</span></h2>
+      <div class="schedule-timeline reveal-stagger">
+        <div class="schedule-day">
+          <div class="schedule-day-num">Day 1</div>
+          <div class="schedule-day-date">Oct 23</div>
+          <h4>Hackathon Inauguration</h4>
+          <ul>
+            <li>Opening ceremony &amp; welcome remarks</li>
+            <li>Keynote &amp; partner introductions</li>
+            <li>Theme reveal and team formation</li>
+            <li>Kickoff Q&amp;A with mentors</li>
+          </ul>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-num">Day 2</div>
+          <div class="schedule-day-date">Oct 24</div>
+          <h4>Build Day</h4>
+          <ul>
+            <li>Teams design, build, and iterate</li>
+            <li>Mentor office hours throughout the day</li>
+            <li>Progress check-ins</li>
+            <li>Final submission prep</li>
+          </ul>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-num">Day 3</div>
+          <div class="schedule-day-date">Oct 25</div>
+          <h4>Judging &amp; Prize Distribution</h4>
+          <ul>
+            <li>Project submissions close</li>
+            <li>Live judging &amp; team presentations</li>
+            <li>Closing ceremony</li>
+            <li>Awards &amp; prize distribution</li>
+          </ul>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:1.5rem">Detailed session times (EST) and the virtual event platform will be shared with registered participants closer to the event.</p>
+    </section>
+
+    <!-- REGISTER -->
+    <section id="register" style="margin-bottom:4.5rem">
+      <h2 class="section-title">Get <span>Involved</span></h2>
+      <div class="reg-roles-grid reveal-stagger">
+        <div class="role-card">
+          <div class="role-icon">&#128187;</div>
+          <h3>Students</h3>
+          <p>Form or join a team, build a project over three days, and compete for prizes &mdash; open to students anywhere, no experience level required.</p>
+          <span class="btn-muted" id="studentRegBtn">Registration Coming Soon</span>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">&#129504;&#127942;</div>
+          <h3>Mentors &amp; Judges</h3>
+          <p>Guide teams through technical challenges during Build Day, then help evaluate final submissions and select the winning teams. One registration covers both roles.</p>
+          <span class="btn-muted" id="mentorJudgeRegBtn">Registration Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIZES & TRACKS (placeholder) -->
+    <section style="margin-bottom:4.5rem">
+      <h2 class="section-title">Prizes <span>&amp; Tracks</span><span class="tba-tag">TBA</span></h2>
+      <div class="pillars-grid reveal-stagger">
+        <div class="pillar-card">
+          <h3>&#127942; Prize Pool</h3>
+          <p>Prize categories and amounts will be announced soon &mdash; check back or watch our LinkedIn for updates.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>&#127919; Hackathon Track</h3>
+          <p>This year's theme is <strong>AI for Software Engineering</strong> &mdash; build tools or applications that use AI to improve how software is designed, built, tested, or maintained.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>&#9878;&#65039; Judging Criteria</h3>
+          <p>Rubric and evaluation criteria will be published ahead of the event so every team knows what judges are looking for.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="partnerships-section reveal" style="margin-bottom:4.5rem">
+      <h2 class="section-title">Presented <span>By</span></h2>
+      <p class="partnerships-sub">RVAHack26 is a collaboration between ACM Richmond and our IEEE partners.</p>
+      <div class="partner-logos">
+        <div class="partner-tile partner-tile-dark">
+          <img src="/acm-logo.png" alt="ACM Richmond" class="partner-logo" style="border-radius:50%">
+          <span class="partner-name partner-name-light">ACM Richmond</span>
+        </div>
+        <div class="partner-tile partner-tile-dark">
+          <img src="/media/ieee-cs-logo.png" alt="IEEE Computer Society" class="partner-logo">
+          <span class="partner-name partner-name-light">IEEE Computer Society</span>
+        </div>
+        <div class="partner-tile partner-tile-dark">
+          <img src="/media/ieee-logo.jpg" alt="IEEE Richmond Section" class="partner-logo">
+          <span class="partner-name partner-name-light">IEEE Richmond Section</span>
+        </div>
+        <div class="partner-tile partner-tile-dark">
+          <img src="/media/ieee-tems-logo.jpeg" alt="IEEE TEMS" class="partner-logo">
+          <span class="partner-name partner-name-light">IEEE TEMS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-bottom:4rem" class="reveal">
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h4>Is RVAHack26 really open internationally?</h4>
+          <p>Yes &mdash; the entire event is virtual, so students, mentors, and judges from anywhere in the world are welcome to participate.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is there a cost to participate?</h4>
+          <p>No, RVAHack26 is completely free for students, mentors, and judges.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Do I need a team before I register?</h4>
+          <p>No. Teams are formed during the Day 1 inauguration if you don't already have one.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Where can I ask other questions?</h4>
+          <p>Reach out via our <a href="/contact/" style="color:var(--cyan-glow)">Contact page</a> and we'll get back to you.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="/acm-logo.png" alt="ACM Richmond" width="44" style="border-radius:50%;border:2px solid var(--cyan-glow)">
+      <p class="footer-tagline">ACM Richmond Professional Chapter &mdash; connecting Richmond's tech community through learning, collaboration, and innovation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/join/">Join Us</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="/join/">Apply to Speak</a></li>
+        <li><a href="/join/">Become a Member</a></li>
+        <li><a href="/join/">Officer Roles</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/richmond-acm-chapter/posts/?feedView=all" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="/media/icons/linkedin.svg" alt="" class="social-icon"></a>
+        <a href="https://www.youtube.com/@ACMChapterRVA" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><img src="/media/icons/youtube.svg" alt="" class="social-icon"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 ACM Richmond Professional Chapter</span>
+    <span>A chapter of the <a href="https://www.acm.org" target="_blank" rel="noopener noreferrer">Association for Computing Machinery</a></span>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+  renderNav('rvahack26');
+
+  var STUDENT_FORM_URL      = 'https://docs.google.com/forms/d/e/1FAIpQLSdifPHwmWQzzf9Uhi8HYVavRAouQZuzPsT2vSL7S73PLvEDkw/viewform';
+  var MENTOR_JUDGE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScOvUCswb0fdMdysxmoQOdi6WuRSeCb-tUtXpjFjbY-Ucj2Xw/viewform';
+
+  function wireRegButton(id, url, label) {
+    var el = document.getElementById(id);
+    if (!el || !url) return;
+    var a = document.createElement('a');
+    a.href = sanitizeUrl(url);
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.className = 'btn';
+    a.textContent = label + ' →';
+    el.replaceWith(a);
+  }
+  wireRegButton('studentRegBtn', STUDENT_FORM_URL, 'Register as Student');
+  wireRegButton('mentorJudgeRegBtn', MENTOR_JUDGE_FORM_URL, 'Register as Mentor/Judge');
+
+  // Countdown to kickoff (local time interpretation, matching site convention elsewhere)
+  var HACKATHON_START = new Date('2026-10-23T00:00:00');
+  function updateCountdown() {
+    var diff = HACKATHON_START - new Date();
+    var d = document.getElementById('cdDays'), h = document.getElementById('cdHours'),
+        m = document.getElementById('cdMins'), s = document.getElementById('cdSecs');
+    if (!d) return;
+    if (diff <= 0) {
+      d.textContent = h.textContent = m.textContent = s.textContent = '0';
+      return;
+    }
+    var totalSecs = Math.floor(diff / 1000);
+    d.textContent = Math.floor(totalSecs / 86400);
+    h.textContent = Math.floor((totalSecs % 86400) / 3600);
+    m.textContent = Math.floor((totalSecs % 3600) / 60);
+    s.textContent = totalSecs % 60;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
