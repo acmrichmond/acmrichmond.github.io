@@ -1838,3 +1838,152 @@ footer {
   .contact-topics { grid-template-columns: 1fr; }
   .contact-hero { padding: 2rem 1.5rem; }
 }
+
+/* ===========================
+   HACKATHON PAGE (RVAHack26)
+   =========================== */
+.hackathon-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 6.5rem 2rem 4rem;
+  background: linear-gradient(135deg, #12232a 0%, #1a3a3d 45%, #16292c 100%);
+  animation: pageFadeIn 0.55s ease forwards;
+}
+.hackathon-hero::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(60,110,113,0.55) 0%, transparent 55%),
+    radial-gradient(circle at 82% 70%, rgba(77,139,142,0.45) 0%, transparent 50%);
+  animation: hackGlowDrift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes hackGlowDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-3%, 2%) scale(1.08); }
+}
+.hackathon-hero-content { position: relative; max-width: 780px; margin: 0 auto; }
+.hackathon-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase;
+  padding: 0.4rem 1.2rem; border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+.hackathon-title {
+  font-size: 3.4rem; font-weight: 800; line-height: 1.05;
+  color: #fff; letter-spacing: -0.02em; margin-bottom: 0.9rem;
+}
+.hackathon-title span { color: #4d8b8e; }
+.hackathon-tagline {
+  font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.75;
+  max-width: 640px; margin: 0 auto 2.25rem;
+}
+.hackathon-hero-actions {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 2.75rem;
+}
+
+.countdown-row {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.countdown-box {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  min-width: 84px;
+  padding: 0.85rem 0.5rem;
+}
+.countdown-num { display: block; font-size: 1.9rem; font-weight: 800; color: #fff; line-height: 1; }
+.countdown-label { display: block; font-size: 0.68rem; color: rgba(255,255,255,0.72); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
+
+/* Role registration cards */
+.reg-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.role-card {
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 2.25rem 1.75rem;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.role-card:hover { transform: translateY(-4px); box-shadow: 0 8px 26px var(--amber-dim); }
+.role-icon { font-size: 2.5rem; margin-bottom: 0.9rem; line-height: 1; }
+.role-card h3 { font-size: 1.15rem; color: var(--white); margin-bottom: 0.6rem; }
+.role-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.5rem; flex: 1; }
+
+/* Schedule timeline */
+.schedule-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.schedule-day {
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  position: relative;
+  border-top: 3px solid var(--cyan-glow);
+}
+.schedule-day-num {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--cyan-glow); margin-bottom: 0.5rem;
+}
+.schedule-day-date { font-size: 1.35rem; font-weight: 800; color: var(--white); margin-bottom: 0.25rem; }
+.schedule-day h4 { font-size: 1.05rem; color: var(--white); margin-bottom: 0.9rem; }
+.schedule-day ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.schedule-day li { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; padding-left: 1.1rem; position: relative; }
+.schedule-day li::before { content: '\25B8'; position: absolute; left: 0; color: var(--cyan-glow); }
+
+/* Placeholder / TBA sections */
+.tba-tag {
+  display: inline-block;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-dim);
+  border-radius: 20px;
+  padding: 0.2rem 0.65rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* FAQ */
+.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; }
+.faq-item {
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+.faq-item h4 { font-size: 0.98rem; color: var(--white); margin-bottom: 0.4rem; }
+.faq-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+
+@media (max-width: 1024px) {
+  .schedule-timeline { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .reg-roles-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .hackathon-title { font-size: 2.4rem; }
+  .hackathon-hero { padding: 5rem 1.5rem 3.5rem; }
+}
+@media (max-width: 480px) {
+  .countdown-box { min-width: 68px; padding: 0.65rem 0.4rem; }
+  .countdown-num { font-size: 1.5rem; }
+}
