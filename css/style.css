@@ -1889,6 +1889,20 @@ footer {
   margin-bottom: 2.75rem;
 }
 
+.hero-linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255,255,255,0.82);
+  font-size: 1.02rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+.hero-linkedin-link:hover { color: #fff; text-decoration: underline; }
+.hero-linkedin-icon { width: 16px; height: 16px; filter: invert(1); opacity: 0.85; flex-shrink: 0; }
+
 .countdown-row {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
   margin-bottom: 2.5rem;
@@ -1984,6 +1998,7 @@ footer {
   .hackathon-hero { padding: 5rem 1.5rem 3.5rem; }
   .date-strike { font-size: 1.25rem; }
   .date-new { font-size: 1.75rem; }
+  .hero-linkedin-link { white-space: normal; text-align: center; }
 }
 @media (max-width: 480px) {
   .countdown-box { min-width: 68px; padding: 0.65rem 0.4rem; }
