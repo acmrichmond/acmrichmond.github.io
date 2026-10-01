@@ -1982,8 +1982,74 @@ footer {
 @media (max-width: 768px) {
   .hackathon-title { font-size: 2.4rem; }
   .hackathon-hero { padding: 5rem 1.5rem 3.5rem; }
+  .date-strike { font-size: 1.25rem; }
+  .date-new { font-size: 1.75rem; }
 }
 @media (max-width: 480px) {
   .countdown-box { min-width: 68px; padding: 0.65rem 0.4rem; }
   .countdown-num { font-size: 1.5rem; }
+  .date-strike { font-size: 1.05rem; }
+  .date-new { font-size: 1.4rem; }
 }
+
+/* Date-change banner */
+.hackathon-update-banner {
+  background: #7a1f1f;
+  color: #fff;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.hackathon-update-banner a { color: #fff; text-decoration: underline; }
+
+/* Old-date / new-date callouts */
+.hackathon-dates-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 1.1rem 0 1.75rem;
+}
+.date-strike {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  opacity: 0.85;
+}
+.date-new {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #4d8b8e;
+}
+.hackathon-dates-block .date-new { color: #fff; }
+.date-new-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #c1121f;
+  border-radius: 20px;
+  padding: 0.15rem 0.6rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.schedule-day-date .date-strike { font-size: 0.95rem; display: block; }
+.schedule-day-date .date-new { font-size: 1.35rem; display: block; }
+
+/* Big LinkedIn follow CTA */
+.linkedin-follow-cta {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-deep) 100%);
+  border: 2px solid var(--cyan-glow);
+  border-radius: 16px;
+  padding: 2.75rem 2rem;
+  text-align: center;
+}
+.linkedin-follow-icon { font-size: 2.75rem; margin-bottom: 1rem; line-height: 1; }
+.linkedin-follow-cta h3 { font-size: 1.5rem; color: var(--white); margin-bottom: 0.75rem; }
+.linkedin-follow-cta p { color: var(--text-muted); max-width: 560px; margin: 0 auto 1.5rem; font-size: 1rem; line-height: 1.7; }
