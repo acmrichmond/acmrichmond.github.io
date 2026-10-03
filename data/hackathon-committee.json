@@ -1,0 +1,11 @@
+[
+  {"name": "Jyostna Seelam", "initials": "JS", "title": "ACM Chair & IEEE TEMS Secretary", "location": "Richmond, VA", "photo": "media/jyostna-seelam-chair.jpeg", "linkedin": "https://www.linkedin.com/in/jyostna-seelam/"},
+  {"name": "Gokul Pandy", "initials": "GP", "title": "IEEE Richmond Section Chair", "location": "Richmond, VA", "photo": "media/gokul-pandy-headshot.jpeg", "linkedin": "https://www.linkedin.com/in/gokulpandy/"},
+  {"name": "Vignesh JP", "initials": "VJ", "title": "IEEE Computer Society Chair", "location": "Richmond, VA", "photo": "media/vignesh-jp-headshot.jpeg", "linkedin": "https://www.linkedin.com/in/vigneshwaran-jagadeesan-pugazhenthi-446b974a/"},
+  {"name": "Suhas Jangoan", "initials": "SJ", "title": "IEEE TEMS Chair", "location": "Richmond, VA", "photo": "media/suhas-jangoan-headshot.jpeg", "linkedin": "https://www.linkedin.com/in/suhasjangoan/"},
+  {"name": "Abdul Rasheed Shaik", "initials": "AR", "title": "ACM Vice Chair", "location": "Richmond, VA", "photo": "media/rasheed-acm-vice-chair.jpg", "linkedin": "https://www.linkedin.com/in/rasheedmca09/"},
+  {"name": "Khadarvali Shaik", "initials": "KS", "title": "ACM Membership Chair", "location": "Richmond, VA", "photo": "media/Khadar-vali-membership-chair_new.jpeg", "linkedin": "https://www.linkedin.com/in/khadarvali-shaik-81907220/"},
+  {"name": "Dipanjan Sen", "initials": "DS", "title": "ACM Secretary", "location": "Richmond, VA", "photo": "media/dipanjan_sen_.secretary.jpeg", "linkedin": "https://www.linkedin.com/in/dipanjan-sen/"},
+  {"name": "Devendra Rajput", "initials": "DR", "title": "IEEE Computer Society", "location": null, "photo": "media/devendra-rajput-headshot.jpeg", "linkedin": "https://www.linkedin.com/in/devendra-rajput121/"},
+  {"name": "Sairamakrishna Karri", "initials": "SK", "title": "Web Master, ACM Richmond", "location": null, "photo": "media/sai-profile-pic.jpeg", "linkedin": "https://www.linkedin.com/in/sairamakrishna-karri-042142121/"}
+]

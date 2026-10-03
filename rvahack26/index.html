@@ -87,7 +87,9 @@
     </div>
   </section>
 
-  <div class="container">
+  <div class="container hack-container">
+  <div class="hack-layout">
+  <div class="hack-main">
 
     <!-- ABOUT -->
     <section style="margin-bottom:4rem" class="reveal">
@@ -235,6 +237,13 @@
       </div>
     </section>
 
+  </div><!-- /hack-main -->
+
+  <aside class="committee-aside" id="committee" aria-label="Organizing Committee">
+    <h3 class="committee-aside-title">Organizing <span>Committee</span></h3>
+    <div class="committee-list" id="committeeGrid"></div>
+  </aside>
+  </div><!-- /hack-layout -->
   </div>
 </main>
 
@@ -280,6 +289,32 @@
 <script src="/js/main.js"></script>
 <script>
   renderNav('rvahack26');
+
+  fetch('/data/hackathon-committee.json')
+    .then(function(r) { return r.json(); })
+    .then(function(members) {
+      var grid = document.getElementById('committeeGrid');
+      grid.innerHTML = members.map(function(m) {
+        var avatar = m.photo
+          ? '<img src="' + sanitizeUrl(absoluteAssetPath(m.photo)) + '" alt="' + sanitize(m.name) + '" loading="lazy">'
+          : sanitize(m.initials || '??');
+        var url = m.linkedin ? sanitizeUrl(m.linkedin) : '';
+        var open = url ? '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="committee-link" aria-label="' + sanitize(m.name) + ' on LinkedIn">' : '';
+        var close = url ? '</a>' : '';
+        return '<div class="committee-card">' +
+          open + '<div class="committee-avatar">' + avatar + '</div>' + close +
+          '<div class="committee-info">' +
+          '<h3>' + open + sanitize(m.name) + close + '</h3>' +
+          '<div class="committee-title">' + sanitize(m.title || '') + '</div>' +
+          (m.location ? '<div class="committee-loc">' + sanitize(m.location) + '</div>' : '') +
+          '</div></div>';
+      }).join('');
+      animateIn(grid);
+    })
+    .catch(function() {
+      document.getElementById('committeeGrid').innerHTML =
+        '<p style="text-align:center;color:var(--text-muted)">Unable to load committee data.</p>';
+    });
 
   var PARTICIPANT_FORM_URL  = 'https://docs.google.com/forms/d/e/1FAIpQLSdifPHwmWQzzf9Uhi8HYVavRAouQZuzPsT2vSL7S73PLvEDkw/viewform';
   var MENTOR_JUDGE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScOvUCswb0fdMdysxmoQOdi6WuRSeCb-tUtXpjFjbY-Ucj2Xw/viewform';
