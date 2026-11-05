@@ -1,0 +1,5 @@
+[
+  {"place": 1, "label": "1st Place", "medal": "🥇", "name": "Karthik Bharadwaj", "country": "Poland", "flag": "media/RVAHack26-media/flags/pl.svg", "photo": "media/RVAHack26-media/Karthik-Bharadwaj-winner-1.png", "linkedin": "https://www.linkedin.com/in/kbwaj/"},
+  {"place": 2, "label": "2nd Place", "medal": "🥈", "name": "Lokesh Gadaguti", "country": "India", "flag": "media/RVAHack26-media/flags/in.svg", "photo": "media/RVAHack26-media/Lokesh-Gadaguti-winner-2.png", "linkedin": "https://www.linkedin.com/in/lokesh-gadaguti-80614338a/"},
+  {"place": 3, "label": "3rd Place", "medal": "🥉", "name": "Swaraa Shah", "country": "United States", "flag": "media/RVAHack26-media/flags/us.svg", "photo": null, "linkedin": "https://www.linkedin.com/in/swaraa-shah-18a3bb3b6/"}
+]
