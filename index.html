@@ -54,8 +54,8 @@
         <a href="/events/" class="btn-outline-large">Explore Events</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num" id="eventsHostedStat">4+</span><span class="stat-label">Events Hosted</span></div>
-        <div class="stat"><span class="stat-num">180+</span><span class="stat-label">Attendees</span></div>
+        <div class="stat"><span class="stat-num" id="eventsHostedStat">10+</span><span class="stat-label">Events Hosted</span></div>
+        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Attendees</span></div>
         <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To Attend</span></div>
         <div class="stat"><span class="stat-num">6</span><span class="stat-label">Officers</span></div>
       </div>
@@ -276,8 +276,10 @@
       var hostedCount = dated
         .filter(function(e) { return e.type === 'past' || new Date(e.date + 'T00:00:00') < today; })
         .length;
+      // +1: one past event was never recorded in events.json
+      var UNRECORDED_EVENTS = 1;
       var hostedEl = document.getElementById('eventsHostedStat');
-      if (hostedEl && hostedCount > 0) hostedEl.textContent = hostedCount + '+';
+      if (hostedEl && hostedCount > 0) hostedEl.textContent = (hostedCount + UNRECORDED_EVENTS) + '+';
 
       var selected = upcoming.length ? upcoming[0] : null;
 
